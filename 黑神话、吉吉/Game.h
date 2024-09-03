@@ -19,4 +19,6 @@ public:
 	int move(vector<string> map);
 	void setEnemy();
 	void Buy();
+	void showBeginPlot();
+	void showFinalPlot();
 };
