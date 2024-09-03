@@ -71,6 +71,8 @@ void Game::Buy()
 					cout << "Successful purchase!!!" << endl;
 					cout << "You successfully mastered " << store.skills.skill[0] << endl;
 					Coins_New = Coins - store.skills.state[0];
+					Flame_Slash = true;
+					character.set_Flame_Slash_true();
 				}
 			case 4:
 				if (Frost_Piercing = true)
@@ -86,9 +88,14 @@ void Game::Buy()
 				else {
 					cout << "Successful purchase!!!" << endl;
 					cout << "You successfully mastered " << store.skills.skill[1] << endl;
+					Coins_New = Coins - store.skills.state[1];
+					Frost_Piercing = true;
+					character.set_Frost_Piercing_true();
 				}
 			}
 		}
 	} while (symbolBUY == 2);
-
+	character.setCoins(Coins_New);
+	character.setHpotionNum(HpotionNum);
+	character.setMpotionNum(MpotionNum);
 }
