@@ -1,16 +1,24 @@
-#pragma once
+#pragma once  
+
+#include <iostream>  
+#include <vector>  
+#include <string>  
+
+using namespace std;
 
 class Skills {
 public:
-	//随便想几个技能名，int 类型，技能学习所需硬币价格
-	int MatterFlame_Slash;
-	int MatterFrost_Piercing;
-	string skill_1 = "Flame Slash"; //烈焰斩
-	string skill_2 = "Frost Piercing"; // 冰霜穿刺
-	Skills() :MatterFlame_Slash(0), MatterFrost_Piercing(0) {}
-	Skills(int a, int b) {
-		MatterFlame_Slash = a; MatterFrost_Piercing = b;
-	}
-	int moneySkill_1 = 4;
-	int moneySkill_2 = 3;
+    // 随便想几个技能名，技能伤害及状态  
+    vector<string> skill = { "flameSlash", "frostPiercing" };
+    vector<int> hurt = { 10, 10 };
+    vector<int> state = { 0, 0 };
+
+    // 设置技能状态  
+    void setSkill(int index);
+
+    // 获取技能伤害  
+    int getSkillhurt(int index);
+
+    // 检查技能是否已学习  
+    bool checkSkill(int index);
 };

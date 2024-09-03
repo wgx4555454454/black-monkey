@@ -7,12 +7,12 @@
 
 using namespace std;
 
-class Store :public Skills {
+class Store  {
 public:
+	Skills skills;
 	int Hpotion;//血量药水价格
 	int Mpotion;//蓝条（魔法药水）价格
 	Store() :Hpotion(0), Mpotion(0) {}
 	~Store() {}
 	void showStore();
-	void Buy(Role& Role);
 };

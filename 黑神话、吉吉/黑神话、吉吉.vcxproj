@@ -144,6 +144,7 @@
     <ClCompile Include="map.cpp" />
     <ClCompile Include="menu.cpp" />
     <ClCompile Include="move.cpp" />
+    <ClCompile Include="skills.cpp" />
     <ClCompile Include="store.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

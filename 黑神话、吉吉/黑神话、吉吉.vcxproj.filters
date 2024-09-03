@@ -62,5 +62,8 @@
     <ClCompile Include="enemy.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="skills.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

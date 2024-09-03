@@ -15,13 +15,14 @@ void Store::showStore() {
 	cout << "-------------------------" << endl;
 }
 
-void Store::Buy(Role& Role)
+void Game::Buy()
 {
-	int Coins = Role.getCoins();
-	int HpotionNum = Role.getHpotionNum();
-	int MpotionNum = Role.getMpotionNum();
-	bool Flame_Slash = Role.get_Flame_Slash();
-	bool Frost_Piercing = Role.get_Frost_Piercing();
+	int Coins = character.getCoins();
+	int Coins_New = Coins;
+	int HpotionNum = character.getHpotionNum();
+	int MpotionNum = character.getMpotionNum();
+	bool Flame_Slash = character.get_Flame_Slash();
+	bool Frost_Piercing = character.get_Frost_Piercing();
 	int symbolBUY = 0;// symbol = 2Ê±ÍË³ö¹ºÂò
 	int symbolTHING = 0;
 	do {
@@ -34,30 +35,26 @@ void Store::Buy(Role& Role)
 			switch (symbolTHING)
 			{
 			case 1:
-				if (Coins < Hpotion)
+				if (Coins < store.Hpotion)
 				{
 					cout << "Sorry,your money is not enough" << endl;
 					break;
 				}
 				else {
 					cout << "Successful purchase!!!" << endl;
-					int Coins_New = Coins - Hpotion;
-					Role.setCoins(Coins_New);
+					Coins_New = Coins - store.Hpotion;
 					HpotionNum = HpotionNum + 1;
-					Role.setHpotionNum(HpotionNum);
 				}
 			case 2:
-				if (Coins < Mpotion)
+				if (Coins < store.Mpotion)
 				{
 					cout << "Sorry,your money is not enough" << endl;
 					break;
 				}
 				else {
 					cout << "Successful purchase!!!" << endl;
-					int Coins_New = Coins - Mpotion;
-					Role.setCoins(Coins_New);
+					Coins_New = Coins - store.Mpotion;
 					MpotionNum = MpotionNum + 1;
-					Role.setMpotionNum(MpotionNum);
 				}
 			case 3:
 				if (Flame_Slash = true)
@@ -65,17 +62,15 @@ void Store::Buy(Role& Role)
 					cout << "you matter the skill before" << endl;
 					break;
 				}
-				if (Coins < moneySkill_1)
+				if (Coins < store.skills.state[0])
 				{
 					cout << "Sorry,your money is not enough" << endl;
 					break;
 				}
 				else {
 					cout << "Successful purchase!!!" << endl;
-					cout << "You successfully mastered " << skill_1 << endl;
-					Role.set_Flame_Slash_true();
-					int Coins_New = Coins - moneySkill_1;
-					Role.setCoins(Coins_New);
+					cout << "You successfully mastered " << store.skills.skill[0] << endl;
+					Coins_New = Coins - store.skills.state[0];
 				}
 			case 4:
 				if (Frost_Piercing = true)
@@ -83,17 +78,14 @@ void Store::Buy(Role& Role)
 					cout << "you matter the skill before" << endl;
 					break;
 				}
-				if (Coins < moneySkill_2)
+				if (Coins < store.skills.state[1])
 				{
 					cout << "Sorry,your money is not enough" << endl;
 					break;
 				}
 				else {
 					cout << "Successful purchase!!!" << endl;
-					cout << "You successfully mastered " << skill_2 << endl;
-					Role.set_Frost_Piercing_true();
-					int Coins_New = Coins - moneySkill_2;
-					Role.setCoins(Coins_New);
+					cout << "You successfully mastered " << store.skills.skill[1] << endl;
 				}
 			}
 		}
