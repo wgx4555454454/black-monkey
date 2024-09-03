@@ -17,5 +17,5 @@ public:
 	void game();
 	void attack();//攻击界面，涉及技能，攻击力之类的输出提示
 	int move(vector<string> map);
-	void setMap();
+	void setEnemy();
 };

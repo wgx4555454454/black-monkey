@@ -10,7 +10,6 @@
 #include <cstdlib> // for system()  
 using namespace std;
 
-
 int playerX = 2;
 int playerY = 1;
 
@@ -50,7 +49,7 @@ int Game::move(vector<string> map) {
         }
 
         // 检查新位置的有效性  
-        if (newX >= 0 && newX < 67 && newY >= 0 && newY < 20) {
+        if (newX >= 0 && newX < 67 && newY >= 0 && newY < 30) {
             if (map[newY][newX] != '-' && map[newY][newX] != '|') {
                 playerX = newX;
                 playerY = newY;
