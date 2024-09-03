@@ -23,7 +23,8 @@ void Game::attack() {
         cout << "请选择你要做的事情：" << endl;
         cout << "1. 普通攻击" << endl;
         cout << "2. 使用技能攻击" << endl;
-        cout << "3. 逃跑" << endl;
+        cout << "3.使用药水回复" << endl;
+        cout << "4. 逃跑" << endl;
         cin >> choose;
 
         switch (choose) {
@@ -40,16 +41,61 @@ void Game::attack() {
             int skillIndex = 0;
             cin >> skillIndex;
             // 减去1以匹配0基索引  
-            if (store.skills.checkSkill(skillIndex - 1)) {
+            if (store.skills.checkSkill(skillIndex - 1) && (character.getMpotionNum() % 10)) {
+                character.setMP(character.getMP() - 10);
                 enemy->setHP(enemy->getHP() - store.skills.getSkillhurt(skillIndex - 1)); // 使用技能造成伤害  
                 cout << "你对怪物造成了 " << store.skills.getSkillhurt(skillIndex - 1) << " 点伤害。" << endl;
             }
             else {
-                cout << "你还没有掌握这个技能。" << endl;
+                if (character.getMP())
+                {
+                    cout << "你还没有掌握这个技能。" << endl;
+                }
+                else
+                {
+                    cout << "你没有足够能量" << endl;
+                }
             }
             break;
         }
         case 3:
+        {
+            int potindex = 0;
+            cout << "你想用哪个药水?" << endl;
+            cout << "1.血量药水" << endl;
+            cout << "2.能量药水" << endl;
+            do {
+                cin >> potindex;
+            } while (potindex != 1 && potindex != 2);
+            if (potindex == 1)
+            {
+                if (character.getHpotionNum())
+                {
+                    character.setHP(character.getHP() + 1 * 10);
+                    character.setHpotionNum(character.getHpotionNum() - 1);
+                }
+                else
+                {
+                    cout << "你没有血量药水" << endl;
+                    break;
+                }
+            }
+            if (potindex == 2)
+            {
+                if (character.getMpotionNum())
+                {
+                    character.setMP(character.getMP() + 1 * 10);
+                    character.setMpotionNum(character.getMpotionNum() - 1);
+                }
+                else
+                {
+                    cout << "你没有能量药水" << endl;
+                    break;
+                }
+            }
+            break;
+        }
+        case 4:
             cout << "成功逃跑！" << endl;
             return; // 退出攻击方法  
         default:

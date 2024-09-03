@@ -54,8 +54,9 @@ void Menu::menu() {
             user_adress = base_adress + "\\" + username;
 
             // 直接使用 shared_ptr 的 reset 方法  
-            game = make_shared<Game>(); // 创建新的 Game 实例  
-            game->game();
+            game.reset(); // 释放之前的实例  
+            game = make_shared<Game>(); // 创建新的 Game 实例
+            //game->game();
 
 
             //保存游戏存档
@@ -69,8 +70,8 @@ void Menu::menu() {
             break;
         }
         case 2: {   //读取存档
-
-            game = make_shared<Game>();// 创建新的 Game 实例
+            game.reset(); // 释放之前的实例  
+            game = make_shared<Game>(); // 创建新的 Game 实例
             int sum = 0;            //记录查找到的存档总数
             vector<string> str;     //记录存档名
             cout << endl;           //界面更美观
@@ -111,7 +112,7 @@ void Menu::menu() {
                 ifstream ifs(user_adress + "\\basic.txt", ios::binary);
                 ifs.read(reinterpret_cast<char*>(game.get()), sizeof(Game)); // 使用 get() 获取裸指针  
                 ifs.close();
-                game->game();
+                //game->game();
 
                 //保存游戏存档
                 if (game != nullptr) {
