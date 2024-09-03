@@ -6,7 +6,7 @@
 using namespace std;
 
 void Store::showStore() {
-	cout << "-------------------------" << endl;
+	cout << "-------------------------" << endl;//
 	cout << "Store!!! Buy you want!" << endl;
 	cout << "1.Hpotion          Price: 2" << endl;
 	cout << "2.Mpotion          Price: 1" << endl;
