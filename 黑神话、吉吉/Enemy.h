@@ -5,6 +5,8 @@
 #include <cstring>
 #include <fstream>
 
+//001
+
 using namespace std;
 
 class Enemy {
