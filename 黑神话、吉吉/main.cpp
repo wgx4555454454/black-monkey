@@ -60,7 +60,7 @@ void welcomePage()
 
 }
 int main() {
-	welcomePage();//¶·ÆÆ²Ôñ·Ò³ÃæÍ¼
+	//welcomePage();//¶·ÆÆ²Ôñ·Ò³ÃæÍ¼
 	Menu _menu;
 	_menu.menu();
 	return 0;

@@ -8,8 +8,6 @@
 #include "Menu.h"  
 
 //存档在桌面上
-
-
 using namespace std;
 
 void Menu::menu() {
@@ -56,7 +54,7 @@ void Menu::menu() {
             // 直接使用 shared_ptr 的 reset 方法  
             game.reset(); // 释放之前的实例  
             game = make_shared<Game>(); // 创建新的 Game 实例
-            //game->game();
+            game->game();
 
 
             //保存游戏存档
@@ -112,7 +110,7 @@ void Menu::menu() {
                 ifstream ifs(user_adress + "\\basic.txt", ios::binary);
                 ifs.read(reinterpret_cast<char*>(game.get()), sizeof(Game)); // 使用 get() 获取裸指针  
                 ifs.close();
-                //game->game();
+                game->game();
 
                 //保存游戏存档
                 if (game != nullptr) {

@@ -13,7 +13,6 @@ private:
 	vector<string> map2;
 	vector<string> map3;
 public:
-    void showPlot();
 	vector<string> getMap1();
 	vector<string> getMap2();
 	vector<string> getMap3();
