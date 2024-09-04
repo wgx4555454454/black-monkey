@@ -14,6 +14,7 @@ void Game::game() {
 	cout << "please enjoy your game :)" << endl;
 	showBeginPlot();
 	system("pause");//接下来开始进入地图并持续移动
+	setEnemy();
 	int ending = 0;//某一张地图的结局，1为通过，0为退出，2为失败
 	int chooseC;//是否选择继续
 	int passes = character.getPasses();
@@ -24,7 +25,8 @@ void Game::game() {
 			if (ending == 1)passes++;
 			if(ending==2)
 			break;
-		case 1:cout << "The second adventure:" << endl;
+		case 1:
+			cout << "The second adventure:" << endl;
 			ending=move(map.getMap2());
 			if (ending == 1)passes++;
 			break;

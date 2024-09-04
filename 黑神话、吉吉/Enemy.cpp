@@ -22,12 +22,21 @@ void Enemy::setAtk(int Atk) {
 	atk = Atk;
 }
 
-void Enemy::showWord(int number)
-{
-	for (int i = 0; i < words[number].size(); i++)
-	{
-		Sleep(50);
-		cout << words[number][i];
-	}
-
+vector<string> Enemy::getWords() {
+	return words;
 }
+
+
+
+void Enemy::showWord(int index) { // Êä³öNPCÌ¨´Ê  
+	vector<string> word = getWords();
+	if (index < 0 || index >= word.size()) {
+		cout << "Invalid index!" << endl;
+		return;
+	}
+	for (char c : word[index]) {
+		Sleep(50);
+		cout << c;
+	}
+	cout << endl;
+	}

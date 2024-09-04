@@ -26,6 +26,8 @@ public:
     void setHP(int);
 	void setAtk(int);
 
+	vector<string> getWords();
+
 	int getATK();
  	int getHP();
 

@@ -11,10 +11,9 @@ using namespace std;
 void Game::attack() {
     cout << "你好！" << endl; // 添加换行以提高可读性  
     srand(static_cast<unsigned int>(time(0))); // 随机数种子  
-
     int bossID = rand() % 7; // 随机选择一个敌人 
-    Enemy enemy_ = _enemy[bossID];
-    Enemy* enemy = &enemy_; // 获取当前敌人的指针  
+    Enemy *enemy = &_enemy[bossID];
+     
     enemy->showWord(1); // 显示敌人的对话  
 
     // 主攻击循环  
