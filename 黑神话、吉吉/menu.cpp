@@ -61,7 +61,7 @@ void Menu::menu() {
             if (game != nullptr) {
                 filesystem::create_directories(user_adress); // 创建目录  
                 ofstream ifs_a(user_adress + "\\basic.txt", ios::binary | ios::trunc);
-                ifs_a.write(reinterpret_cast<char*>(game.get()), sizeof(Game)); // 保存用户基本信息  
+                ifs_a.write(reinterpret_cast<char*>(&(game->character)), sizeof(Game)); // 保存用户基本信息  
                 ifs_a.close();
             }
 
@@ -108,7 +108,7 @@ void Menu::menu() {
             {
                 user_adress = base_adress + "\\" + str[m_choice - 1];
                 ifstream ifs(user_adress + "\\basic.txt", ios::binary);
-                ifs.read(reinterpret_cast<char*>(game.get()), sizeof(Game)); // 使用 get() 获取裸指针  
+                ifs.read(reinterpret_cast<char*>(&(game->character)), sizeof(Role)); // 使用 get() 获取裸指针  
                 ifs.close();
                 game->game();
 
@@ -116,7 +116,7 @@ void Menu::menu() {
                 if (game != nullptr) {
                     filesystem::create_directories(user_adress); // 创建目录(若目录存在则无操作)  
                     ofstream ifs_a(user_adress + "\\basic.txt", ios::binary | ios::trunc);
-                    ifs_a.write(reinterpret_cast<char*>(game.get()), sizeof(Game)); // 保存用户基本信息  
+                    ifs_a.write(reinterpret_cast<char*>(&(game->character)), sizeof(Game)); // 保存用户基本信息  
                     ifs_a.close();
                 }
 
