@@ -18,28 +18,49 @@ void moveCursor(int x, int y) {
     cout << "\033[" << (y + 1) << ";" << (x + 1) << "H"; // 以行列为基础移动光标  
 }
 
-// 显示地图  
+// 打印地图  
 void displayMap(vector<string> map) {
     system("cls"); // 清屏  
     for (const string& str : map) {
         cout << str << endl; // 打印每个字符串  
     }
+}
+
+// 打印敌人
+void displayEnemy(vector<string> map_2) {
+    int EnemyX = 0;
+    int EnemyY = 0;
+    for (const string& str : map_2) {
+        EnemyX = str.find('@'); // 查找第一个@字符的位置
+        while (EnemyX != string::npos) {
+            moveCursor(EnemyX, EnemyY); 
+            cout << '@';
+            EnemyX = str.find('@', EnemyX + 1); // 查找下一个@字符
+        }
+        EnemyY++;
+    }
+}
+
+// 打印与更新玩家位置
+void displayP(int X,int Y,vector<string> map_s)
+{   
     moveCursor(playerX, playerY); // 移动光标到玩家位置  
-    cout << 'P'; // 这里显示玩家位置为 P  
+    cout << map_s[playerY][playerX];
+    moveCursor(X, Y);
+    cout << 'P'; // 这里显示玩家位置为 P
 }
 
 // 主函数  
-int Game::move(vector<string> map) {
-    vector<string> Map = map;
+int Game::move(vector<string> map, vector<string> map_s) {
     int ending_Attack = 0;
     char input;
+    int newX = playerX; //记录X坐标
+    int newY = playerY; //记录Y坐标
+    displayMap(map);
+    displayEnemy(map_s);
+    displayP(newX, newY, map_s);
     while (true) {
-        displayMap(Map);
         input = _getch(); // 获取用户输入，不显示在屏幕上  
-
-        int newX = playerX;
-        int newY = playerY;
-
         // 根据输入更新位置  
         switch (input) {
         case 'w': newY--; break; // 上  
@@ -51,30 +72,40 @@ int Game::move(vector<string> map) {
         }
 
         // 检查新位置的有效性  
-        if (newX >= 0 && newX < 67 && newY >= 0 && newY < 30) {
-            if (Map[newY][newX] != '-' && Map[newY][newX] != '|') {
-                playerX = newX;
-                playerY = newY;
-
-                // 检查是否与@碰撞  
-                if (Map[playerY][playerX] == '@') {
-                    system("cls");
-                    ending_Attack = attack();
-                    if (ending_Attack == 0)//逃跑
-                        continue;
-                    if (ending_Attack == 1)//击败怪物
-                        Map[playerY][playerX] = ' ';//消除怪物
-                    if(ending_Attack == 2)
-                        return 2;//角色已死亡
+        if (map_s[newY][newX] != '+') {
+            displayP(newX, newY,map_s);
+            playerX = newX;
+            playerY = newY;
+            // 检查是否与@碰撞  
+            if (map_s[newY][newX] == '@') {
+                system("cls");
+                switch(attack())
+                {
+                case 0://逃跑
+                    break;
+                case 1://击败怪物
+                    map_s[playerY][playerX] = ' ';//消除怪物
+                    break;
+                case 2:
+                    return 2;//角色已死亡
                 }
-
-                // 检查是否与!碰撞  
-                if (Map[playerY][playerX] == '!') {
-                    system("cls");
-                    cout << "Succeed!" << endl;
-                    return 1; // 通过游戏  
-                }
+                displayMap(map);
+                displayEnemy(map_s);
+                displayP(newX, newY, map_s);
             }
+            // 检查是否与*碰撞  
+            if (map_s[newY][newX] == '*') {
+                system("cls");
+                cout << "恭喜你通过本关！" << endl;
+                playerX = 2;
+                playerY = 1;
+                system("pause");
+                return 1; // 通过游戏  
+            }
+        }
+        else {
+            newX = playerX;
+            newY = playerY;
         }
         continue;
     }

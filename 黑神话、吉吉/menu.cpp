@@ -30,7 +30,7 @@ void Menu::menu() {
         welcomePage();
         string newGameMenu = "   1.新的游戏  2.读取存档  3.退出游戏";
         for (int i = 0; i < newGameMenu.length(); i++) {
-            Sleep(24);
+            Sleep(16);
             cout << newGameMenu[i];
         }
         cout << "\n\n   ●请选择：";

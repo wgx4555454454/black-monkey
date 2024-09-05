@@ -26,7 +26,7 @@ void Game::game() {
 	while(passes<3&&chooseC==0){
 		switch (passes) {
 		case 0:cout << "The first adventure:" << endl;
-			ending = move(map.getMap1());
+			ending = move(map.getMap1(), map.getMap1_s());
 			if (ending == 1)
 				passes++;
 
@@ -38,7 +38,7 @@ void Game::game() {
 			break;
 		case 1:
 			cout << "The second adventure:" << endl;
-			ending=move(map.getMap2());
+			ending=move(map.getMap2(),map.getMap2_s());
 			if (ending == 1)
 				passes++;
 
@@ -49,7 +49,7 @@ void Game::game() {
 				characterLive = 0;
 			break;
 		case 2:cout << "The third adventure:" << endl;
-			ending=move(map.getMap3());
+			ending=move(map.getMap3(),map.getMap3_s());
 			if (ending == 1)
 				passes++;
 
