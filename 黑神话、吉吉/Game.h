@@ -14,7 +14,8 @@ public:
 	Store store;
 	Role character = Role(100, 35, 100, 0);
 	void game();
-	void attack();//攻击界面，涉及技能，攻击力之类的输出提示
+	int attack();//攻击界面，涉及技能，攻击力之类的输出提示
+				 //逃跑返回0，成功击败怪物返回1，被怪物打败返回2	
 	int move(vector<string> map);
 	void setEnemy();
 	void Buy();

@@ -12,11 +12,12 @@ private://h
 	int MP;//mana points
 	int ATK;//attack;
 	int passes;//通过的关卡
-	int Coins=100;
-	int HpotionNum = 0;
-	int MpotionNum = 0;
-	bool Matter_Flame_Slash=false;
-	bool Matter_Frost_Piercing=false;
+	int Coins=100;//金钱
+	int HpotionNum = 0;//血量药水
+	int MpotionNum = 0;//能量药水
+
+	bool Matter_Flame_Slash=false;//是否学习烈焰斩
+	bool Matter_Frost_Piercing=false;//是否学习冰霜穿刺
 public:
 	Role() : HP(0), MP(0), ATK(0), passes(0){};
 	~Role() {};

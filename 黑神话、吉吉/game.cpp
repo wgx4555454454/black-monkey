@@ -12,28 +12,104 @@ void Game::game() {
 	cout << "welcome to our game" << endl;
 	cout << "this is a world about RPG" << endl;
 	cout << "please enjoy your game :)" << endl;
-	showBeginPlot();
+	showBeginPlot();//故事情节
+
 	system("pause");//接下来开始进入地图并持续移动
-	setEnemy();
+
 	int ending = 0;//某一张地图的结局，1为通过，0为退出，2为失败
-	int chooseC;//是否选择继续
+
+	int chooseC=0;//是否选择继续或退出
+	int choose_C = 0;
+	int characterLive = 1;//角色活着，0为死亡
+	int choose_Character = 0;
 	int passes = character.getPasses();
-	while(passes<3){
+	while(passes<3&&chooseC==0){
 		switch (passes) {
 		case 0:cout << "The first adventure:" << endl;
 			ending = move(map.getMap1());
-			if (ending == 1)passes++;
-			if(ending==2)
+			if (ending == 1)
+				passes++;
+
+			if (ending == 0)
+				chooseC = 1;
+
+			if (ending == 2)
+				characterLive = 0;
 			break;
 		case 1:
 			cout << "The second adventure:" << endl;
 			ending=move(map.getMap2());
-			if (ending == 1)passes++;
+			if (ending == 1)
+				passes++;
+
+			if (ending == 0)
+				chooseC = 1;
+
+			if (ending == 2)
+				characterLive = 0;
 			break;
 		case 2:cout << "The third adventure:" << endl;
 			ending=move(map.getMap3());
-			if (ending == 1)passes++;
+			if (ending == 1)
+				passes++;
+
+			if (ending == 0)
+				chooseC = 1;
+
+			if (ending == 2)
+				characterLive = 0;
 			break;
+		}
+		if (chooseC == 1) {
+			system("cls");
+			cout << "1.继续  2.退出 3.下一关" << endl;
+			do{
+				cin >> choose_C;
+				if (choose_C != 1 && choose_C != 2 && choose_C != 3)
+					cout << "Error!请输入1-3中的一个数" << endl;
+			} while (choose_C != 1 && choose_C != 2 && choose_C != 3);
+			switch (choose_C) {
+			case 1:
+				chooseC = 0;
+				break;
+			case 2:
+				character.setPasses(passes);//保存进度
+				return;
+				break;
+			case 3:
+				chooseC = 0;
+				passes++;
+				break;
+			default:
+				cout << "Error!" << endl;
+			}
+		}
+		if (characterLive == 0) {
+			system("cls");
+			cout << "角色已死亡！" << endl;
+			cout<<"1.退出  2.从头开始" << endl;
+			do{
+				cin >> choose_Character;
+				if (choose_Character != 1 && choose_Character != 2)
+					cout << "Error！请输入1-2" << endl;
+			} while (choose_Character != 1 && choose_Character != 2);
+
+			switch (choose_Character) {
+			case 1:
+				character.setHP(100);
+				character.setMP(100);
+				characterLive = 1;
+				return;
+				break;
+			case 2:
+				character.setHP(100);
+				character.setMP(100);
+				characterLive = 1;
+				passes = 0;
+				break;
+			default:
+				cout << "Error!" << endl;
+			}
 		}
 		character.setPasses(passes);
 	}

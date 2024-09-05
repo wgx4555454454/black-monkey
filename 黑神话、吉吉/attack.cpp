@@ -8,8 +8,8 @@
 
 using namespace std;
 
-void Game::attack() {
-    cout << "你好！" << endl; // 添加换行以提高可读性  
+int Game::attack() {
+    setEnemy();
     srand(static_cast<unsigned int>(time(0))); // 随机数种子  
     int bossID = rand() % 7; // 随机选择一个敌人 
     Enemy *enemy = &_enemy[bossID];
@@ -96,7 +96,7 @@ void Game::attack() {
         }
         case 4:
             cout << "成功逃跑！" << endl;
-            return; // 退出攻击方法  
+            return 0; // 退出攻击方法  
         default:
             cout << "错误：无效命令。" << endl;
             break;
@@ -111,11 +111,13 @@ void Game::attack() {
 
     // 检查战斗结果  
     if (character.getHP() > 0) {
-        cout << "怪物被击杀！" << endl;
+        cout << "怪物被击杀！777" << endl;
         enemy->showWord(2); // 显示敌人被击败的对话  
+        return 1;
     }
     else {
         cout << "你被击杀了。" << endl;
+        return 2;
     }
 
     system("pause"); // 暂停系统以查看消息  

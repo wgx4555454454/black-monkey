@@ -30,9 +30,11 @@ void displayMap(vector<string> map) {
 
 // 主函数  
 int Game::move(vector<string> map) {
+    vector<string> Map = map;
+    int ending_Attack = 0;
     char input;
     while (true) {
-        displayMap(map);
+        displayMap(Map);
         input = _getch(); // 获取用户输入，不显示在屏幕上  
 
         int newX = playerX;
@@ -50,18 +52,24 @@ int Game::move(vector<string> map) {
 
         // 检查新位置的有效性  
         if (newX >= 0 && newX < 67 && newY >= 0 && newY < 30) {
-            if (map[newY][newX] != '-' && map[newY][newX] != '|') {
+            if (Map[newY][newX] != '-' && Map[newY][newX] != '|') {
                 playerX = newX;
                 playerY = newY;
 
                 // 检查是否与@碰撞  
-                if (map[playerY][playerX] == '@') {
+                if (Map[playerY][playerX] == '@') {
                     system("cls");
-                    attack(); // 调用攻击函数  
+                    ending_Attack = attack();
+                    if (ending_Attack == 0)//逃跑
+                        continue;
+                    if (ending_Attack == 1)//击败怪物
+                        Map[playerY][playerX] = ' ';//消除怪物
+                    if(ending_Attack == 2)
+                        return 2;//角色已死亡
                 }
 
                 // 检查是否与!碰撞  
-                if (map[playerY][playerX] == '!') {
+                if (Map[playerY][playerX] == '!') {
                     system("cls");
                     cout << "Succeed!" << endl;
                     return 1; // 通过游戏  
