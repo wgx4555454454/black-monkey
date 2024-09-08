@@ -11,7 +11,6 @@ using namespace std;
 int getInt() {
 	string x;
 	while (true) {
-		cout << "Enter an integer: ";
 		getline(cin, x); // 使用 getline 读取整行输入  
 		bool valid = true;
 
