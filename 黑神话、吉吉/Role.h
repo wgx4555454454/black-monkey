@@ -28,72 +28,41 @@ public:
 		passes = passes_s;
 	}
 
-	int getHP() {
-		return HP;
-	}
-	void setHP(int hp) {
-		HP = hp;
-	}
+	int getHP();
 
-	int getMP() {
-		return MP;
-	}
-	void setMP(int mp) {
-		MP = mp;
-	}
+	void setHP(int hp);
 
-	int getATK() {
-		return ATK;
-	}
-	void setATK(int atk) {
-		ATK = atk;
-	}
+	int getMP();
 
-	int getPasses(){
-		return passes;
-	}
-	void setPasses(int passes_s){
-		passes = passes_s;
-	}
+	void setMP(int mp);
 
-	int getCoins() {
-		return Coins;
-	}
-	void setCoins(int coins) {
-		Coins = coins;
-	}
+	int getATK();
 
-	int getHpotionNum() {
-		return HpotionNum;
-	}
-	void setHpotionNum(int hpotionNum) {
-		HpotionNum = hpotionNum;
-	}
+	void setATK(int atk);
 
-	int getMpotionNum() {
-		return MpotionNum;
-	}
-	void setMpotionNum(int mpotionNum) {
-		MpotionNum = mpotionNum;
-	}
+	int getPasses();
 
-	bool get_Flame_Slash() {
-		return Matter_Flame_Slash;
-	}
+	void setPasses(int passes_s);
 
-	bool get_Frost_Piercing() {
-		return Matter_Frost_Piercing;
-	}
+	int getCoins();
 
-	void set_Flame_Slash_true()
-	{
-		Matter_Flame_Slash = true;
-	}
+	void setCoins(int coins);
 
-	void set_Frost_Piercing_true()
-	{
-		Matter_Frost_Piercing = true;
-	}
+	int getHpotionNum();
+
+	void setHpotionNum(int hpotionNum);
+
+	int getMpotionNum();
+
+	void setMpotionNum(int mpotionNum);
+
+	bool get_Flame_Slash();
+
+	bool get_Frost_Piercing();
+
+	void set_Flame_Slash_true();
+
+	void set_Frost_Piercing_true();
 
 	void showBag();
 };
