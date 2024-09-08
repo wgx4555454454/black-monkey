@@ -24,6 +24,7 @@ void displayMap(vector<string> map) {
     for (const string& str : map) {
         cout << str << endl; // 打印每个字符串  
     }
+    cout << "w a s d移动  0 菜单  b 商店 " << endl;
 }
 
 // 打印敌人

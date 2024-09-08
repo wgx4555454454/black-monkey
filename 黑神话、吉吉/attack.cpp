@@ -15,7 +15,7 @@ int Game::attack() {
     int bossID = rand() % 7; // 随机选择一个敌人 
     Enemy *enemy = &_enemy[bossID];
      
-    enemy->showWord(1); // 显示敌人的对话  
+    enemy->showWord(0); // 显示敌人的对话  
 
     // 主攻击循环  
     while (character.getHP() > 0 && enemy->getHP() > 0) {
@@ -193,13 +193,13 @@ int Game::attack() {
 
     // 检查战斗结果  
     if (character.getHP() > 0) {
-        string temporary21 = "怪物被击杀！777";
+        string temporary21 = "怪物被击杀！";
         for (int i = 0; i < temporary21.length(); i++) {
             Sleep(50);
             cout << temporary21[i];
         }
         cout << endl;
-        enemy->showWord(2); // 显示敌人被击败的对话  
+        enemy->showWord(1); // 显示敌人被击败的对话  
         return 1;
     }
     else {
@@ -209,6 +209,7 @@ int Game::attack() {
             cout << temporary22[i];
         }
         cout << endl;
+        enemy->showWord(2);
         return 2;
     }
 

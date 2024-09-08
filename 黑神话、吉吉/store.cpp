@@ -72,7 +72,7 @@ void Game::Buy()
 		store.showStore();
 		string temporary44 = "1.BUY  2.Exit";
 		for (int i = 0; i < temporary44.length(); i++) {
-			Sleep(50);
+			Sleep(5);
 			cout << temporary44[i];
 		}
 		cout << endl;
@@ -81,7 +81,7 @@ void Game::Buy()
 		{
 			string temporary45 = "please input the number you want buy";
 			for (int i = 0; i < temporary45.length(); i++) {
-				Sleep(50);
+				Sleep(5);
 				cout << temporary45[i];
 			}
 			cout << endl;
@@ -93,7 +93,7 @@ void Game::Buy()
 				{
 					string temporary46 = "Sorry,your money is not enough";
 					for (int i = 0; i < temporary46.length(); i++) {
-						Sleep(50);
+						Sleep(5);
 						cout << temporary46[i];
 					}
 					cout << endl;
@@ -103,7 +103,7 @@ void Game::Buy()
 				else {
 					string temporary47 = "Successful purchase!!!";
 					for (int i = 0; i < temporary47.length(); i++) {
-						Sleep(50);
+						Sleep(5);
 						cout << temporary47[i];
 					}
 					cout << endl;
@@ -117,7 +117,7 @@ void Game::Buy()
 				{
 					string temporary46 = "Sorry,your money is not enough";
 					for (int i = 0; i < temporary46.length(); i++) {
-						Sleep(50);
+						Sleep(5);
 						cout << temporary46[i];
 					}
 					cout << endl;
@@ -127,7 +127,7 @@ void Game::Buy()
 				else {
 					string temporary47 = "Successful purchase!!!";
 					for (int i = 0; i < temporary47.length(); i++) {
-						Sleep(50);
+						Sleep(5);
 						cout << temporary47[i];
 					}
 					cout << endl;
@@ -141,7 +141,7 @@ void Game::Buy()
 				{
 					string temporary48 = "you matter the skill before";
 					for (int i = 0; i < temporary48.length(); i++) {
-						Sleep(50);
+						Sleep(5);
 						cout << temporary48[i];
 					}
 					cout << endl;
@@ -152,7 +152,7 @@ void Game::Buy()
 				{
 					string temporary46 = "Sorry,your money is not enough";
 					for (int i = 0; i < temporary46.length(); i++) {
-						Sleep(50);
+						Sleep(5);
 						cout << temporary46[i];
 					}
 					cout << endl;
@@ -162,7 +162,7 @@ void Game::Buy()
 				else {
 					string temporary47 = "Successful purchase!!!";
 					for (int i = 0; i < temporary47.length(); i++) {
-						Sleep(50);
+						Sleep(5);
 						cout << temporary47[i];
 					}
 					cout << endl;
@@ -178,7 +178,7 @@ void Game::Buy()
 				{
 					string temporary48 = "you matter the skill before";
 					for (int i = 0; i < temporary48.length(); i++) {
-						Sleep(50);
+						Sleep(5);
 						cout << temporary48[i];
 					}
 					cout << endl;
@@ -189,7 +189,7 @@ void Game::Buy()
 				{
 					string temporary46 = "Sorry,your money is not enough";
 					for (int i = 0; i < temporary46.length(); i++) {
-						Sleep(50);
+						Sleep(5);
 						cout << temporary46[i];
 					}
 					cout << endl;
@@ -199,7 +199,7 @@ void Game::Buy()
 				else {
 					string temporary47 = "Successful purchase!!!";
 					for (int i = 0; i < temporary47.length(); i++) {
-						Sleep(50);
+						Sleep(5);
 						cout << temporary47[i];
 					}
 					cout << endl;

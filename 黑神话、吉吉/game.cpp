@@ -11,6 +11,8 @@ int getInt();
 void Game::game() {
 	system("pause");
 	system("cls");
+	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(hConsole, FOREGROUND_RED);
 	string temporary24 = "欢迎来到黑神话";
 	for (int i = 0; i < temporary24.length(); i++) {
 		Sleep(50);
@@ -272,6 +274,8 @@ void Game::setEnemy() {
 }
 void Game::showBeginPlot()
 {
+	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN);
 	string wordbegin = {
 		"孙悟空拒绝了佛祖所封“斗战胜佛”的神仙职位，选择回到花果山躺平\n"
 		"继续做划过上本地帮派大佬，但是天庭明显认为花果山这里的本地帮派不太有礼貌\n"
@@ -282,7 +286,11 @@ void Game::showBeginPlot()
 		"面对这种情况天兵天将自然是不允许，而杨戬一跃而下主动向身后所有天兵天将提出要和悟空进行单挑\n"
 		"自此一场恶战正式展开\n"
 	};
-	cout << wordbegin << endl;
+	for (char c : wordbegin) {
+		std::cout << c;
+		Sleep(20); // Delay of 100 milliseconds  
+	}
+	cout << endl;
 }
 void Game::showFinalPlot() {
 	string wordend = {
@@ -292,5 +300,9 @@ void Game::showFinalPlot() {
 		"因为你身为天命人，本是无名之人\n"
 		"但经过重重困难，获得了五个根器，也许此刻你就够格成为孙悟空了\n"
 	};
-	cout << wordend << endl;
+	for (char c : wordend) {
+		std::cout << c;
+		Sleep(20); // Delay of 100 milliseconds  
+	}
+	cout << endl;
 }

@@ -65,7 +65,7 @@ void welcomePage()
 		cout << page[i] << endl;
 	}
 
-	// 设置文本颜色为蓝色色  
+	// 设置文本颜色为绿色  
 	SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN);
 
 	cout << endl;
