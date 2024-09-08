@@ -128,12 +128,10 @@ bool Role::get_Frost_Piercing() {
 	return Matter_Frost_Piercing;
 }
 
-void Role::set_Flame_Slash_true()
-{
+void Role::set_Flame_Slash_true(){
 	Matter_Flame_Slash = true;
 }
 
-void Role::set_Frost_Piercing_true()
-{
+void Role::set_Frost_Piercing_true(){
 	Matter_Frost_Piercing = true;
 }

@@ -130,8 +130,7 @@ int Game::attack() {
                 cout << "你对怪物造成了 " << store.skills.getSkillhurt(skillIndex - 1) << " 点伤害。" << endl;
             }
             else {
-                if (character.getMP())
-                {
+                if (character.getMP()){
                     string temporary12 = "你还没有掌握这个技能。";
                     for (int i = 0; i < temporary12.length(); i++) {
                         // 如果检测到键盘按下
@@ -147,8 +146,7 @@ int Game::attack() {
                     }
                     cout << endl;
                 }
-                else
-                {
+                else{
                     string temporary13 = "你没有足够能量";
                     for (int i = 0; i < temporary13.length(); i++) {
                         // 如果检测到键盘按下
@@ -216,15 +214,12 @@ int Game::attack() {
             do {
                 potindex=getInt();
             } while (potindex != 1 && potindex != 2);
-            if (potindex == 1)
-            {
-                if (character.getHpotionNum())
-                {
+            if (potindex == 1){
+                if (character.getHpotionNum()){
                     character.setHP(character.getHP() + 1 * 10);
                     character.setHpotionNum(character.getHpotionNum() - 1);
                 }
-                else
-                {
+                else{
                     string temporary17 = "你没有血量药水";
                     for (int i = 0; i < temporary17.length(); i++) {
                         // 如果检测到键盘按下
@@ -242,15 +237,12 @@ int Game::attack() {
                     break;
                 }
             }
-            if (potindex == 2)
-            {
-                if (character.getMpotionNum())
-                {
+            if (potindex == 2){
+                if (character.getMpotionNum()){
                     character.setMP(character.getMP() + 1 * 10);
                     character.setMpotionNum(character.getMpotionNum() - 1);
                 }
-                else
-                {
+                else{
                     string temporary18 = "你没有能量药水";
                     for (int i = 0; i < temporary18.length(); i++) {
                         // 如果检测到键盘按下

@@ -58,8 +58,7 @@ void Store::showStore() {
 	cout << endl;
 }
 
-void Game::Buy()
-{
+void Game::Buy(){
 	int Coins = character.getCoins();
 	int HpotionNum = character.getHpotionNum();
 	int MpotionNum = character.getMpotionNum();
@@ -77,8 +76,7 @@ void Game::Buy()
 		}
 		cout << endl;
 		symbolBUY=getInt();
-		if (symbolBUY == 1)
-		{
+		if (symbolBUY == 1){
 			string temporary45 = "please input the number you want buy";
 			for (int i = 0; i < temporary45.length(); i++) {
 				Sleep(5);
@@ -86,11 +84,9 @@ void Game::Buy()
 			}
 			cout << endl;
 			symbolTHING=getInt();
-			switch (symbolTHING)
-			{
+			switch (symbolTHING){
 			case 1:
-				if (Coins < store.Hpotion)
-				{
+				if (Coins < store.Hpotion){
 					string temporary46 = "Sorry,your money is not enough";
 					for (int i = 0; i < temporary46.length(); i++) {
 						Sleep(5);
@@ -113,8 +109,7 @@ void Game::Buy()
 					break;
 				}
 			case 2:
-				if (Coins < store.Mpotion)
-				{
+				if (Coins < store.Mpotion){
 					string temporary46 = "Sorry,your money is not enough";
 					for (int i = 0; i < temporary46.length(); i++) {
 						Sleep(5);
@@ -137,8 +132,7 @@ void Game::Buy()
 					break;
 				}
 			case 3:
-				if (Flame_Slash = true)
-				{
+				if (Flame_Slash = true){
 					string temporary48 = "you matter the skill before";
 					for (int i = 0; i < temporary48.length(); i++) {
 						Sleep(5);
@@ -148,8 +142,7 @@ void Game::Buy()
 					system("pause");
 					break;
 				}
-				if (Coins < store.skills.price[0])
-				{
+				if (Coins < store.skills.price[0]){
 					string temporary46 = "Sorry,your money is not enough";
 					for (int i = 0; i < temporary46.length(); i++) {
 						Sleep(5);
@@ -174,8 +167,7 @@ void Game::Buy()
 					break;
 				}
 			case 4:
-				if (Frost_Piercing = true)
-				{
+				if (Frost_Piercing = true){
 					string temporary48 = "you matter the skill before";
 					for (int i = 0; i < temporary48.length(); i++) {
 						Sleep(5);
@@ -185,8 +177,7 @@ void Game::Buy()
 					system("pause");
 					break;
 				}
-				if (Coins < store.skills.price[1])
-				{
+				if (Coins < store.skills.price[1]){
 					string temporary46 = "Sorry,your money is not enough";
 					for (int i = 0; i < temporary46.length(); i++) {
 						Sleep(5);

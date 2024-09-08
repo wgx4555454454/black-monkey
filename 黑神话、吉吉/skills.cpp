@@ -1,24 +1,18 @@
 ﻿#include"Skills.h"
 using namespace std;
-void Skills::setSkill(int number)
-{
+void Skills::setSkill(int number){
     price[number] = 1;
 }
-int Skills::getSkillhurt(int number)
-{
-    if (checkSkill(number))
-    {
+int Skills::getSkillhurt(int number){
+    if (checkSkill(number)){
         return hurt[number];
     }
-    else
-    {
+    else{
         return 0;
     }
 }
-bool Skills::checkSkill(int number)
-{
-    if (price[number] == 1)
-    {
+bool Skills::checkSkill(int number){
+    if (price[number] == 1){
         return 1;
     }
     else

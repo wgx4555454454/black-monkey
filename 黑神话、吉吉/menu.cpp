@@ -82,10 +82,9 @@ void Menu::menu() {
             cin >> choice1;
         }
 
-
+        //case1:新存档
         switch (choice1) {
-        case 1: //新存档
-        {
+        case 1:{
             string temporary3 = "   ●请输入新存档名：";
             for (int i = 0; i < temporary3.length(); i++) {
                 // 如果检测到键盘按下
@@ -169,15 +168,13 @@ void Menu::menu() {
             cin >> m_choice;
 
             //防止出错
-            while (m_choice<0 || m_choice>sum)
-            {
+            while (m_choice<0 || m_choice>sum){
                 cout << "   请输入(0到" << sum << ")之间的数：";
                 cin >> m_choice;
             }
 
-            if (m_choice == 0) continue;
-            else    //打开对应存档
-            {
+            if (m_choice == 0) continue;   //打开对应存档
+            else{
                 user_adress = base_adress + "\\" + str[m_choice - 1];
                 ifstream ifs(user_adress + "\\basic.txt", ios::binary);
                 ifs.read(reinterpret_cast<char*>(&(game->character)), sizeof(Role)); // 使用 get() 获取裸指针  
@@ -195,8 +192,7 @@ void Menu::menu() {
                 break;
             }
         }
-        case 3:
-        {
+        case 3:{
             choice2 = 0; // 退出游戏  
             break;
         }
