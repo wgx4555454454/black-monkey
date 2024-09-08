@@ -4,6 +4,7 @@
 #include <filesystem>
 #include "Menu.h"
 using namespace std;
+int getInt();
 
 void Store::showStore() {
 	cout << "-------------------------" << endl;//
@@ -28,11 +29,11 @@ void Game::Buy()
 		system("cls");
 		store.showStore();
 		cout << "1.BUY  2.Exit" << endl;
-		cin >> symbolBUY;
+		symbolBUY=getInt();
 		if (symbolBUY == 1)
 		{
 			cout << "please input the number you want buy" << endl;
-			cin >> symbolTHING;
+			symbolTHING=getInt();
 			switch (symbolTHING)
 			{
 			case 1:

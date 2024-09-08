@@ -1,11 +1,41 @@
-#include <iostream>
-#include<iomanip>
-#include <string>
-#include <filesystem>
-#include<windows.h>
-#include "menu.h"
+#include <iostream>  
+#include <iomanip>  
+#include <string>  
+#include <filesystem>  
+#include <windows.h>  
+#include <limits>  
+#include"Menu.h"
 
 using namespace std;
+
+int getInt() {
+	string x;
+	while (true) {
+		cout << "Enter an integer: ";
+		getline(cin, x); // 使用 getline 读取整行输入  
+		bool valid = true;
+
+		// 检查输入是否为有效的整数  
+		if (x.empty() || (x[0] != '-' && !isdigit(x[0]))) {
+			valid = false;
+		}
+		else {
+			for (size_t i = 1; i < x.length(); ++i) {
+				if (!isdigit(x[i])) {
+					valid = false;
+					break;
+				}
+			}
+		}
+
+		if (valid) {
+			return stoi(x); // string to int  
+		}
+		else {
+			cout << "Invalid input. Please enter a valid integer." << '\n';
+		}
+	}
+}
 
 void welcomePage()
 {

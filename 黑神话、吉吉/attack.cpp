@@ -7,6 +7,7 @@
 #include "Menu.h"  
 
 using namespace std;
+int getInt();
 
 int Game::attack() {
     setEnemy();
@@ -24,7 +25,7 @@ int Game::attack() {
         cout << "2. 使用技能攻击" << endl;
         cout << "3.使用药水回复" << endl;
         cout << "4. 逃跑" << endl;
-        cin >> choose;
+        choose=getInt();
 
         switch (choose) {
         case 1: {
@@ -38,7 +39,7 @@ int Game::attack() {
                 cout << (i + 1) << ". " << store.skills.skill[i] << endl; // 显示技能列表  
             }
             int skillIndex = 0;
-            cin >> skillIndex;
+            skillIndex=getInt();
             // 减去1以匹配0基索引  
             if (store.skills.checkSkill(skillIndex - 1) && (character.getMpotionNum() % 10)) {
                 character.setMP(character.getMP() - 10);
@@ -64,7 +65,7 @@ int Game::attack() {
             cout << "1.血量药水" << endl;
             cout << "2.能量药水" << endl;
             do {
-                cin >> potindex;
+                potindex=getInt();
             } while (potindex != 1 && potindex != 2);
             if (potindex == 1)
             {

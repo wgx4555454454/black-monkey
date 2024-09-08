@@ -5,6 +5,7 @@
 #include "Menu.h"
 
 using namespace std;
+int getInt();
 
 void Game::game() {
 	system("pause");
@@ -25,7 +26,8 @@ void Game::game() {
 	int passes = character.getPasses();
 	while(passes<3&&chooseC==0){
 		switch (passes) {
-		case 0:cout << "The first adventure:" << endl;
+		case 0:cout << "第一关：" << endl;
+			system("pause");
 			ending = move(map.getMap1(), map.getMap1_s());
 			if (ending == 1)
 				passes++;
@@ -37,7 +39,8 @@ void Game::game() {
 				characterLive = 0;
 			break;
 		case 1:
-			cout << "The second adventure:" << endl;
+			cout << "第二关：" << endl;
+			system("pause");
 			ending=move(map.getMap2(),map.getMap2_s());
 			if (ending == 1)
 				passes++;
@@ -48,7 +51,8 @@ void Game::game() {
 			if (ending == 2)
 				characterLive = 0;
 			break;
-		case 2:cout << "The third adventure:" << endl;
+		case 2:cout << "第三关：" << endl;
+			system("pause");
 			ending=move(map.getMap3(),map.getMap3_s());
 			if (ending == 1)
 				passes++;
@@ -64,7 +68,7 @@ void Game::game() {
 			system("cls");
 			cout << "1.继续  2.退出 3.下一关" << endl;
 			do{
-				cin >> choose_C;
+				choose_C = getInt();
 				if (choose_C != 1 && choose_C != 2 && choose_C != 3)
 					cout << "Error!请输入1-3中的一个数" << endl;
 			} while (choose_C != 1 && choose_C != 2 && choose_C != 3);
@@ -89,7 +93,7 @@ void Game::game() {
 			cout << "角色已死亡！" << endl;
 			cout<<"1.退出  2.从头开始" << endl;
 			do{
-				cin >> choose_Character;
+				choose_Character=getInt();
 				if (choose_Character != 1 && choose_Character != 2)
 					cout << "Error！请输入1-2" << endl;
 			} while (choose_Character != 1 && choose_Character != 2);
