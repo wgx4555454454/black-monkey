@@ -66,7 +66,7 @@ int Game::attack() {
         }
         cout << endl;
 
-        string temporary9 = "3.使用药水回复";
+        string temporary9 = "3. 使用药水回复";
         for (int i = 0; i < temporary9.length(); i++) {
             // 如果检测到键盘按下
             if (_kbhit()) {

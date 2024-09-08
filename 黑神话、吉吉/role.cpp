@@ -69,3 +69,71 @@ void Role::showBag() {
 		}
 	} while (chooseWhether != 2);
 }
+
+
+int Role::getHP() {
+	return HP;
+}
+void Role::setHP(int hp) {
+	HP = hp;
+}
+
+int Role::getMP() {
+	return MP;
+}
+void Role::setMP(int mp) {
+	MP = mp;
+}
+
+int Role::getATK() {
+	return ATK;
+}
+void Role::setATK(int atk) {
+	ATK = atk;
+}
+
+int Role::getPasses() {
+	return passes;
+}
+void Role::setPasses(int passes_s) {
+	passes = passes_s;
+}
+
+int Role::getCoins() {
+	return Coins;
+}
+void Role::setCoins(int coins) {
+	Coins = coins;
+}
+
+int Role::getHpotionNum() {
+	return HpotionNum;
+}
+void Role::setHpotionNum(int hpotionNum) {
+	HpotionNum = hpotionNum;
+}
+
+int Role::getMpotionNum() {
+	return MpotionNum;
+}
+void Role::setMpotionNum(int mpotionNum) {
+	MpotionNum = mpotionNum;
+}
+
+bool Role::get_Flame_Slash() {
+	return Matter_Flame_Slash;
+}
+
+bool Role::get_Frost_Piercing() {
+	return Matter_Frost_Piercing;
+}
+
+void Role::set_Flame_Slash_true()
+{
+	Matter_Flame_Slash = true;
+}
+
+void Role::set_Frost_Piercing_true()
+{
+	Matter_Frost_Piercing = true;
+}
