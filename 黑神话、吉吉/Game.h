@@ -6,7 +6,7 @@
 #include"Menu.h"
 
 using namespace std;
-
+ 
 class Game  {
 public:
 	Map map;

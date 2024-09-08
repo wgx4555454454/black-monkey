@@ -169,13 +169,13 @@ void Game::game() {
 			switch (choose_Character) {
 			case 1:
 				character.setHP(100);
-				character.setMP(100);
+				character.setMP(35);
 				characterLive = 1;
 				return;
 				break;
 			case 2:
 				character.setHP(100);
-				character.setMP(100);
+				character.setMP(35);
 				characterLive = 1;
 				passes = 0;
 				break;
