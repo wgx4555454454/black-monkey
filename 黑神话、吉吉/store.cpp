@@ -18,7 +18,6 @@ void Store::showStore() {
 void Game::Buy()
 {
 	int Coins = character.getCoins();
-	int Coins_New = Coins;
 	int HpotionNum = character.getHpotionNum();
 	int MpotionNum = character.getMpotionNum();
 	bool Flame_Slash = character.get_Flame_Slash();
@@ -26,6 +25,8 @@ void Game::Buy()
 	int symbolBUY = 0;// symbol = 2Ê±ÍË³ö¹ºÂò
 	int symbolTHING = 0;
 	do {
+		system("cls");
+		store.showStore();
 		cout << "1.BUY  2.Exit" << endl;
 		cin >> symbolBUY;
 		if (symbolBUY == 1)
@@ -38,64 +39,78 @@ void Game::Buy()
 				if (Coins < store.Hpotion)
 				{
 					cout << "Sorry,your money is not enough" << endl;
+					system("pause");
 					break;
 				}
 				else {
 					cout << "Successful purchase!!!" << endl;
-					Coins_New = Coins - store.Hpotion;
+					Coins = Coins - store.Hpotion;
 					HpotionNum = HpotionNum + 1;
+					system("pause");
+					break;
 				}
 			case 2:
 				if (Coins < store.Mpotion)
 				{
 					cout << "Sorry,your money is not enough" << endl;
+					system("pause");
 					break;
 				}
 				else {
 					cout << "Successful purchase!!!" << endl;
-					Coins_New = Coins - store.Mpotion;
+					Coins = Coins - store.Mpotion;
 					MpotionNum = MpotionNum + 1;
+					system("pause");
+					break;
 				}
 			case 3:
 				if (Flame_Slash = true)
 				{
 					cout << "you matter the skill before" << endl;
+					system("pause");
 					break;
 				}
 				if (Coins < store.skills.state[0])
 				{
 					cout << "Sorry,your money is not enough" << endl;
+					system("pause");
 					break;
 				}
 				else {
 					cout << "Successful purchase!!!" << endl;
 					cout << "You successfully mastered " << store.skills.skill[0] << endl;
-					Coins_New = Coins - store.skills.state[0];
+					Coins= Coins - store.skills.state[0];
 					Flame_Slash = true;
 					character.set_Flame_Slash_true();
+					system("pause");
+					break;
 				}
 			case 4:
 				if (Frost_Piercing = true)
 				{
 					cout << "you matter the skill before" << endl;
+					system("pause");
 					break;
 				}
 				if (Coins < store.skills.state[1])
 				{
 					cout << "Sorry,your money is not enough" << endl;
+					system("pause");
 					break;
 				}
 				else {
 					cout << "Successful purchase!!!" << endl;
 					cout << "You successfully mastered " << store.skills.skill[1] << endl;
-					Coins_New = Coins - store.skills.state[1];
+					Coins = Coins - store.skills.state[1];
 					Frost_Piercing = true;
 					character.set_Frost_Piercing_true();
+					system("pause");
+					break;
 				}
 			}
 		}
-	} while (symbolBUY == 2);
-	character.setCoins(Coins_New);
+	} while (symbolBUY == 1);
+	character.setCoins(Coins);
 	character.setHpotionNum(HpotionNum);
 	character.setMpotionNum(MpotionNum);
 }

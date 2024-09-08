@@ -61,16 +61,25 @@ int Game::move(vector<string> map, vector<string> map_s) {
     displayP(newX, newY, map_s);
     while (true) {
         input = _getch(); // 获取用户输入，不显示在屏幕上  
+        int store_Exit = 0;
         // 根据输入更新位置  
         switch (input) {
-        case 'w': newY--; break; // 上  
-        case 'a': newX--; break; // 左  
-        case 's': newY++; break; // 下  
-        case 'd': newX++; break; // 右  
-        case '0': return 0; // 退出  
+        case 'w': newY--;
+            break; // 上  
+        case 'a': newX--; 
+            break; // 左  
+        case 's': newY++; 
+            break; // 下  
+        case 'd': newX++; 
+            break; // 右 
+        case 'b':Buy();
+            store_Exit = 1;
+            break;
+        case '0': return 0; // 菜单 
         default: continue; // 其他输入无效  
         }
-
+        if (store_Exit == 1)
+            break;
         // 检查新位置的有效性  
         if (map_s[newY][newX] != '+') {
             displayP(newX, newY,map_s);
