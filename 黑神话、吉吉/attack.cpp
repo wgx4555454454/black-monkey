@@ -20,6 +20,10 @@ int Game::attack() {
 
     // 主攻击循环  
     while (character.getHP() > 0 && enemy->getHP() > 0) {
+        cout << "主角：" << endl;
+        cout << "     血量：" << character.getHP() << endl;
+        cout << "怪物：" << endl;
+        cout << "     血量：" << enemy->getHP() << endl;
         int choose = 0;
         string temporary6 = "请选择你要做的事情：";
         for (int i = 0; i < temporary6.length(); i++) {
@@ -303,6 +307,8 @@ int Game::attack() {
             cout << "怪物造成了 " << enemy->getATK() << " 点伤害。" << endl;
             character.setHP(character.getHP() - enemy->getATK()); // 角色受到伤害  
         }
+        system("pause");
+        system("cls");
     }
 
     // 检查战斗结果  
