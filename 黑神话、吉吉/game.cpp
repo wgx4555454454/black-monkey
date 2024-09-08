@@ -287,8 +287,9 @@ void Game::game() {
 		}
 		character.setPasses(passes);
 	}
-
-	cout << "over";
+	system("cls");
+	showFinalPlot();
+	system("pause");
 }
 
 void Game::setEnemy() {

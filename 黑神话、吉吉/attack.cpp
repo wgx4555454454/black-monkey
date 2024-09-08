@@ -117,6 +117,7 @@ int Game::attack() {
                 Sleep(6);
                 cout << temporary11[i];
             }
+            cout << endl;
             for (size_t i = 0; i < store.skills.skill.size(); ++i) {
                 cout << (i + 1) << ". " << store.skills.skill[i] << endl; // 显示技能列表  
             }
