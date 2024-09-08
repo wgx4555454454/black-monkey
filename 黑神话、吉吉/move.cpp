@@ -24,7 +24,7 @@ void displayMap(vector<string> map) {
     for (const string& str : map) {
         cout << str << endl; // 打印每个字符串  
     }
-    cout << "w a s d移动  0 菜单  b 商店 " << endl;
+    cout << "w a s d移动  0 菜单  b 商店  m 背包" << endl;
 }
 
 // 打印敌人
@@ -62,7 +62,7 @@ int Game::move(vector<string> map, vector<string> map_s) {
     displayP(newX, newY, map_s);
     while (true) {
         input = _getch(); // 获取用户输入，不显示在屏幕上  
-        int store_Exit = 0;
+        int other_Exit = 0;
         // 根据输入更新位置  
         switch (input) {
         case 'w': newY--;
@@ -74,12 +74,15 @@ int Game::move(vector<string> map, vector<string> map_s) {
         case 'd': newX++; 
             break; // 右 
         case 'b':Buy();
-            store_Exit = 1;
+            other_Exit = 1;
+            break;
+        case 'm':character.showBag();
+            other_Exit = 1;
             break;
         case '0': return 0; // 菜单 
         default: continue; // 其他输入无效  
         }
-        if (store_Exit == 1)
+        if (other_Exit == 1)
             break;
         // 检查新位置的有效性  
         if (map_s[newY][newX] != '+') {
@@ -95,6 +98,7 @@ int Game::move(vector<string> map, vector<string> map_s) {
                     break;
                 case 1://击败怪物
                     map_s[playerY][playerX] = ' ';//消除怪物
+                    character.setCoins(character.getCoins() + 5);
                     break;
                 case 2:
                     return 2;//角色已死亡

@@ -12,7 +12,7 @@ private://h
 	int MP;//mana points
 	int ATK;//attack;
 	int passes;//通过的关卡
-	int Coins=100;//金钱
+	int Coins=5;//金钱
 	int HpotionNum = 0;//血量药水
 	int MpotionNum = 0;//能量药水
 
@@ -94,4 +94,6 @@ public:
 	{
 		Matter_Frost_Piercing = true;
 	}
+
+	void showBag();
 };

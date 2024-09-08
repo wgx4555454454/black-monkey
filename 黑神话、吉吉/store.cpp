@@ -148,7 +148,7 @@ void Game::Buy()
 					system("pause");
 					break;
 				}
-				if (Coins < store.skills.state[0])
+				if (Coins < store.skills.price[0])
 				{
 					string temporary46 = "Sorry,your money is not enough";
 					for (int i = 0; i < temporary46.length(); i++) {
@@ -167,7 +167,7 @@ void Game::Buy()
 					}
 					cout << endl;
 					cout << "You successfully mastered " << store.skills.skill[0] << endl;
-					Coins= Coins - store.skills.state[0];
+					Coins= Coins - store.skills.price[0];
 					Flame_Slash = true;
 					character.set_Flame_Slash_true();
 					system("pause");
@@ -185,7 +185,7 @@ void Game::Buy()
 					system("pause");
 					break;
 				}
-				if (Coins < store.skills.state[1])
+				if (Coins < store.skills.price[1])
 				{
 					string temporary46 = "Sorry,your money is not enough";
 					for (int i = 0; i < temporary46.length(); i++) {
@@ -204,7 +204,7 @@ void Game::Buy()
 					}
 					cout << endl;
 					cout << "You successfully mastered " << store.skills.skill[1] << endl;
-					Coins = Coins - store.skills.state[1];
+					Coins = Coins - store.skills.price[1];
 					Frost_Piercing = true;
 					character.set_Frost_Piercing_true();
 					system("pause");

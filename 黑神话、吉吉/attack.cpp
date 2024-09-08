@@ -195,11 +195,13 @@ int Game::attack() {
     if (character.getHP() > 0) {
         string temporary21 = "怪物被击杀！";
         for (int i = 0; i < temporary21.length(); i++) {
-            Sleep(50);
+            Sleep(0);
             cout << temporary21[i];
         }
         cout << endl;
         enemy->showWord(1); // 显示敌人被击败的对话  
+        cout << "你获得了5个金币！" << endl;
+        system("pause");
         return 1;
     }
     else {
@@ -210,6 +212,7 @@ int Game::attack() {
         }
         cout << endl;
         enemy->showWord(2);
+        system("pause");
         return 2;
     }
 

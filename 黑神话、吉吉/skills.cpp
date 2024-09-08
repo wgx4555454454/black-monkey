@@ -2,7 +2,7 @@
 using namespace std;
 void Skills::setSkill(int number)
 {
-    state[number] = 1;
+    price[number] = 1;
 }
 int Skills::getSkillhurt(int number)
 {
@@ -17,7 +17,7 @@ int Skills::getSkillhurt(int number)
 }
 bool Skills::checkSkill(int number)
 {
-    if (state[number] == 1)
+    if (price[number] == 1)
     {
         return 1;
     }
