@@ -2,7 +2,8 @@
 #include<iomanip>
 #include <string>
 #include <filesystem>
-#include <windows.h>  
+#include <windows.h>
+#include <conio.h>
 #include "Menu.h"
 
 using namespace std;
@@ -15,14 +16,30 @@ void Game::game() {
 	SetConsoleTextAttribute(hConsole, FOREGROUND_RED);
 	string temporary24 = "欢迎来到黑神话";
 	for (int i = 0; i < temporary24.length(); i++) {
-		Sleep(50);
+		// 如果检测到键盘按下
+		if (_kbhit()) {
+			char key = _getch();  // 获取按下的键
+			if (key == '\r') {  // 判断是否按下回车键
+				cout << temporary24.substr(i) << endl;  // 输出剩下的全部内容
+				break;
+			}
+		}
+		Sleep(16);
 		cout << temporary24[i];
 	}
 	cout << endl;
 
 	string temporary25 = "这是一个简单的RPG游戏";
 	for (int i = 0; i < temporary25.length(); i++) {
-		Sleep(50);
+		// 如果检测到键盘按下
+		if (_kbhit()) {
+			char key = _getch();  // 获取按下的键
+			if (key == '\r') {  // 判断是否按下回车键
+				cout << temporary25.substr(i) << endl;  // 输出剩下的全部内容
+				break;
+			}
+		}
+		Sleep(16);
 		cout << temporary25[i];
 	}
 	cout << endl;
@@ -45,7 +62,15 @@ void Game::game() {
 		case 0: {
 			string temporary27 = "第一关：";
 			for (int i = 0; i < temporary27.length(); i++) {
-				Sleep(50);
+				// 如果检测到键盘按下
+				if (_kbhit()) {
+					char key = _getch();  // 获取按下的键
+					if (key == '\r') {  // 判断是否按下回车键
+						cout << temporary27.substr(i) << endl;  // 输出剩下的全部内容
+						break;
+					}
+				}
+				Sleep(16);
 				cout << temporary27[i];
 			}
 			cout << endl;
@@ -64,7 +89,15 @@ void Game::game() {
 		case 1: {
 			string temporary28 = "第二关：";
 			for (int i = 0; i < temporary28.length(); i++) {
-				Sleep(50);
+				// 如果检测到键盘按下
+				if (_kbhit()) {
+					char key = _getch();  // 获取按下的键
+					if (key == '\r') {  // 判断是否按下回车键
+						cout << temporary28.substr(i) << endl;  // 输出剩下的全部内容
+						break;
+					}
+				}
+				Sleep(16);
 				cout << temporary28[i];
 			}
 			cout << endl;
@@ -83,7 +116,15 @@ void Game::game() {
 		case 2: {
 			string temporary29 = "第三关：";
 			for (int i = 0; i < temporary29.length(); i++) {
-				Sleep(50);
+				// 如果检测到键盘按下
+				if (_kbhit()) {
+					char key = _getch();  // 获取按下的键
+					if (key == '\r') {  // 判断是否按下回车键
+						cout << temporary29.substr(i) << endl;  // 输出剩下的全部内容
+						break;
+					}
+				}
+				Sleep(16);
 				cout << temporary29[i];
 			}
 			cout << endl;
@@ -104,7 +145,15 @@ void Game::game() {
 			system("cls");
 			string temporary30 = "1.继续  2.退出 3.下一关";
 			for (int i = 0; i < temporary30.length(); i++) {
-				Sleep(50);
+				// 如果检测到键盘按下
+				if (_kbhit()) {
+					char key = _getch();  // 获取按下的键
+					if (key == '\r') {  // 判断是否按下回车键
+						cout << temporary30.substr(i) << endl;  // 输出剩下的全部内容
+						break;
+					}
+				}
+				Sleep(16);
 				cout << temporary30[i];
 			}
 			cout << endl;
@@ -113,7 +162,15 @@ void Game::game() {
 				if (choose_C != 1 && choose_C != 2 && choose_C != 3) {
 					string temporary31 = "Error!请输入1-3中的一个数";
 					for (int i = 0; i < temporary31.length(); i++) {
-						Sleep(50);
+						// 如果检测到键盘按下
+						if (_kbhit()) {
+							char key = _getch();  // 获取按下的键
+							if (key == '\r') {  // 判断是否按下回车键
+								cout << temporary31.substr(i) << endl;  // 输出剩下的全部内容
+								break;
+							}
+						}
+						Sleep(16);
 						cout << temporary31[i];
 					}
 					cout << endl;
@@ -134,7 +191,15 @@ void Game::game() {
 			default:
 				string temporary32 = "Error!";
 				for (int i = 0; i < temporary32.length(); i++) {
-					Sleep(50);
+					// 如果检测到键盘按下
+					if (_kbhit()) {
+						char key = _getch();  // 获取按下的键
+						if (key == '\r') {  // 判断是否按下回车键
+							cout << temporary32.substr(i) << endl;  // 输出剩下的全部内容
+							break;
+						}
+					}
+					Sleep(16);
 					cout << temporary32[i];
 				}
 				cout << endl;
@@ -144,13 +209,29 @@ void Game::game() {
 			system("cls");
 			string temporary33 = "角色已死亡！";
 			for (int i = 0; i < temporary33.length(); i++) {
-				Sleep(50);
+				// 如果检测到键盘按下
+				if (_kbhit()) {
+					char key = _getch();  // 获取按下的键
+					if (key == '\r') {  // 判断是否按下回车键
+						cout << temporary33.substr(i) << endl;  // 输出剩下的全部内容
+						break;
+					}
+				}
+				Sleep(16);
 				cout << temporary33[i];
 			}
 			cout << endl;
 			string temporary34 = "1.退出  2.从头开始";
 			for (int i = 0; i < temporary34.length(); i++) {
-				Sleep(50);
+				// 如果检测到键盘按下
+				if (_kbhit()) {
+					char key = _getch();  // 获取按下的键
+					if (key == '\r') {  // 判断是否按下回车键
+						cout << temporary34.substr(i) << endl;  // 输出剩下的全部内容
+						break;
+					}
+				}
+				Sleep(16);
 				cout << temporary34[i];
 			}
 			cout << endl;
@@ -159,7 +240,15 @@ void Game::game() {
 				if (choose_Character != 1 && choose_Character != 2) {
 					string temporary35 = "Error！请输入1-2";
 					for (int i = 0; i < temporary35.length(); i++) {
-						Sleep(50);
+						// 如果检测到键盘按下
+						if (_kbhit()) {
+							char key = _getch();  // 获取按下的键
+							if (key == '\r') {  // 判断是否按下回车键
+								cout << temporary35.substr(i) << endl;  // 输出剩下的全部内容
+								break;
+							}
+						}
+						Sleep(16);
 						cout << temporary35[i];
 					}
 					cout << endl;
@@ -182,7 +271,15 @@ void Game::game() {
 			default:
 				string temporary32 = "Error!";
 				for (int i = 0; i < temporary32.length(); i++) {
-					Sleep(50);
+					// 如果检测到键盘按下
+					if (_kbhit()) {
+						char key = _getch();  // 获取按下的键
+						if (key == '\r') {  // 判断是否按下回车键
+							cout << temporary32.substr(i) << endl;  // 输出剩下的全部内容
+							break;
+						}
+					}
+					Sleep(16);
 					cout << temporary32[i];
 				}
 				cout << endl;
@@ -286,9 +383,19 @@ void Game::showBeginPlot()
 		"面对这种情况天兵天将自然是不允许，而杨戬一跃而下主动向身后所有天兵天将提出要和悟空进行单挑\n"
 		"自此一场恶战正式展开\n"
 	};
+	int pos = 0;  // 显式计数器，用于跟踪当前字符的位置
 	for (char c : wordbegin) {
-		std::cout << c;
-		Sleep(20); // Delay of 100 milliseconds  
+		// 检测是否有按键被按下
+		if (_kbhit()) {
+			char key = _getch();  // 获取按下的键
+			if (key == '\r') {  // 判断是否按下回车键
+				cout << wordbegin.substr(pos) << endl;  // 输出剩余的字符
+				break;
+			}
+		}
+		cout << c;  // 输出当前字符
+		Sleep(20);  // 延迟
+		pos++;  // 更新位置索引
 	}
 	cout << endl;
 }
@@ -300,9 +407,19 @@ void Game::showFinalPlot() {
 		"因为你身为天命人，本是无名之人\n"
 		"但经过重重困难，获得了五个根器，也许此刻你就够格成为孙悟空了\n"
 	};
+	int pos = 0;  // 显式计数器，用于跟踪当前字符的位置
 	for (char c : wordend) {
-		std::cout << c;
-		Sleep(20); // Delay of 100 milliseconds  
+		// 检测是否有按键被按下
+		if (_kbhit()) {
+			char key = _getch();  // 获取按下的键
+			if (key == '\r') {  // 判断是否按下回车键
+				cout << wordend.substr(pos) << endl;  // 输出剩余的字符
+				break;
+			}
+		}
+		cout << c;  // 输出当前字符
+		Sleep(20);  // 延迟
+		pos++;  // 更新位置索引
 	}
 	cout << endl;
 }

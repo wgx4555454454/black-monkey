@@ -112,6 +112,14 @@ int Game::move(vector<string> map, vector<string> map_s) {
                 system("cls");
                 string temporary36 = "恭喜你通过本关！";
                 for (int i = 0; i < temporary36.length(); i++) {
+                    // 如果检测到键盘按下
+                    if (_kbhit()) {
+                        char key = _getch();  // 获取按下的键
+                        if (key == '\r') {  // 判断是否按下回车键
+                            cout << temporary36.substr(i) << endl;  // 输出剩下的全部内容
+                            break;
+                        }
+                    }
                     Sleep(50);
                     cout << temporary36[i];
                 }

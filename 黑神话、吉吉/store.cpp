@@ -10,49 +10,49 @@ int getInt();
 void Store::showStore() {
 	string temporary37 = "-------------------------";
 	for (int i = 0; i < temporary37.length(); i++) {
-		Sleep(50);
+		Sleep(16);
 		cout << temporary37[i];
 	}
 	cout << endl;
 
 	string temporary38 = "Store!!! Buy you want!";
 	for (int i = 0; i < temporary38.length(); i++) {
-		Sleep(50);
+		Sleep(16);
 		cout << temporary38[i];
 	}
 	cout << endl;
 
 	string temporary39 = "1.Hpotion          Price: 2";
 	for (int i = 0; i < temporary39.length(); i++) {
-		Sleep(50);
+		Sleep(16);
 		cout << temporary39[i];
 	}
 	cout << endl;
 
 	string temporary40 = "2.Mpotion          Price: 1";
 	for (int i = 0; i < temporary40.length(); i++) {
-		Sleep(50);
+		Sleep(16);
 		cout << temporary40[i];
 	}
 	cout << endl;
 
 	string temporary41 = "3.Flame Slash      Price: 4";
 	for (int i = 0; i < temporary41.length(); i++) {
-		Sleep(50);
+		Sleep(16);
 		cout << temporary41[i];
 	}
 	cout << endl;
 
 	string temporary42 = "4.Frost Piercing   Price: 3";
 	for (int i = 0; i < temporary42.length(); i++) {
-		Sleep(50);
+		Sleep(16);
 		cout << temporary42[i];
 	}
 	cout << endl;
 
 	string temporary43 = "-------------------------";
 	for (int i = 0; i < temporary43.length(); i++) {
-		Sleep(50);
+		Sleep(16);
 		cout << temporary43[i];
 	}
 	cout << endl;
