@@ -30,9 +30,6 @@ int getInt() {
 		if (valid) {
 			return stoi(x); // string to int  
 		}
-		else {
-			cout << "Invalid input. Please enter a valid integer." << '\n';
-		}
 	}
 }
 
@@ -74,56 +71,56 @@ void welcomePage()
 	cout << endl;
 	string temporary49 = "╔═══════════════════════════════════════════════════════════════════════╗";
 	for (int i = 0; i < temporary49.length(); i++) {
-		Sleep(5);
+		Sleep(0);
 		cout << temporary49[i];
 	}
 
 	cout << endl;
 	string temporary50 = "║\t\t***中国海洋大学2024夏季学期c++课程设计***\t\t║";
 	for (int i = 0; i < temporary50.length(); i++) {
-		Sleep(25);
+		Sleep(0);
 		cout << temporary50[i];
 	}
 
 	cout << endl;
 	string temporary51 = "║ 文字版《黑神话·悟空》\t\t\t\t\t\t\t║";
 	for (int i = 0; i < temporary51.length(); i++) {
-		Sleep(25);
+		Sleep(0);
 		cout << temporary51[i];
 	}
 
 	cout << endl;
 	string temporary52 = "║ 游戏介绍：一个简单的文字RPG。\t\t\t\t\t\t║";
 	for (int i = 0; i < temporary52.length(); i++) {
-		Sleep(25);
+		Sleep(0);
 		cout << temporary52[i];
 	}
 
 	cout << endl;
 	string temporary53 = "║ 版本：1.0\t\t\t\t\t\t\t\t║";
 	for (int i = 0; i < temporary53.length(); i++) {
-		Sleep(25);
+		Sleep(0);
 		cout << temporary53[i];
 	}
 
 	cout << endl;
 	string temporary54 = "║ 作者: \t\t\t\t\t\t\t\t║";
 	for (int i = 0; i < temporary54.length(); i++) {
-		Sleep(25);
+		Sleep(0);
 		cout << temporary54[i];
 	}
 
 	cout << endl;
 	string temporary55 = "║ 邮箱: \t\t\t\t\t\t\t\t║";
 	for (int i = 0; i < temporary55.length(); i++) {
-		Sleep(25);
+		Sleep(0);
 		cout << temporary55[i];
 	}
 
 	cout << endl;
 	string temporary56 = "╚═══════════════════════════════════════════════════════════════════════╝";
 	for (int i = 0; i < temporary56.length(); i++) {
-		Sleep(5);
+		Sleep(0);
 		cout << temporary56[i];
 	}
 

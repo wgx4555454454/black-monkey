@@ -11,25 +11,21 @@ int getInt();
 void Game::game() {
 	system("pause");
 	system("cls");
-	string temporary24 = "welcome to our game";
+	string temporary24 = "欢迎来到黑神话";
 	for (int i = 0; i < temporary24.length(); i++) {
 		Sleep(50);
 		cout << temporary24[i];
 	}
 	cout << endl;
 
-	string temporary25 = "this is a world about RPG";
+	string temporary25 = "这是一个简单的RPG游戏";
 	for (int i = 0; i < temporary25.length(); i++) {
 		Sleep(50);
 		cout << temporary25[i];
 	}
 	cout << endl;
 
-	string temporary26 = "please enjoy your game : ";
-	for (int i = 0; i < temporary26.length(); i++) {
-		Sleep(50);
-		cout << temporary26[i];
-	}
+	
 	cout << endl;
 	showBeginPlot();//故事情节
 
