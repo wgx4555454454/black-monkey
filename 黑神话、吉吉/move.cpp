@@ -105,7 +105,12 @@ int Game::move(vector<string> map, vector<string> map_s) {
             // 检查是否与*碰撞  
             if (map_s[newY][newX] == '*') {
                 system("cls");
-                cout << "恭喜你通过本关！" << endl;
+                string temporary36 = "恭喜你通过本关！";
+                for (int i = 0; i < temporary36.length(); i++) {
+                    Sleep(50);
+                    cout << temporary36[i];
+                }
+                cout << endl;
                 playerX = 2;
                 playerY = 1;
                 system("pause");

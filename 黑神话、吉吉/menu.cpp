@@ -28,18 +28,32 @@ void Menu::menu() {
         system("cls");
         void welcomePage();
         welcomePage();
+
+        HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+        SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN);
+
         string newGameMenu = "   1.新的游戏  2.读取存档  3.退出游戏";
         for (int i = 0; i < newGameMenu.length(); i++) {
             Sleep(16);
             cout << newGameMenu[i];
         }
-        cout << "\n\n   ●请选择：";
+
+        string temporary1 = "\n\n   ●请选择：";
+        for (int i = 0; i < temporary1.length(); i++) {
+            Sleep(50);
+            cout << temporary1[i];
+        }
 
         //功能选择
         int choice1 = 0;
         cin >> choice1;
         while (choice1 != 1 && choice1 != 2 && choice1 != 3) {
-            cout << "Error! 请输入 1-3 之间的数： " << endl;
+            string temporary2 = "Error! 请输入 1-3 之间的数： ";
+            for (int i = 0; i < temporary2.length(); i++) {
+                Sleep(50);
+                cout << temporary2[i];
+            }
+            cout << endl;
             cin >> choice1;
         }
 
@@ -47,7 +61,11 @@ void Menu::menu() {
         switch (choice1) {
         case 1: //新存档
         {
-            cout << "   ●请输入新存档名：";
+            string temporary3 = "   ●请输入新存档名：";
+            for (int i = 0; i < temporary3.length(); i++) {
+                Sleep(50);
+                cout << temporary3[i];
+            }
             cin >> username;
             user_adress = base_adress + "\\" + username;
 
@@ -87,12 +105,20 @@ void Menu::menu() {
             //存档总数为0时
             if (sum == 0)
             {
-                cout << "   没有找到存档或存档不存在…\n   ";
+                string temporary4 = "   没有找到存档或存档不存在…\n   ";
+                for (int i = 0; i < temporary4.length(); i++) {
+                    Sleep(50);
+                    cout << temporary4[i];
+                }
                 system("pause");
                 continue;
             }
 
-            cout << "   ●请选择所需存档(0 返回)：";
+            string temporary5 = "   ●请选择所需存档(0 返回)：";
+            for (int i = 0; i < temporary5.length(); i++) {
+                Sleep(50);
+                cout << temporary5[i];
+            }
             int m_choice = -1;
             cin >> m_choice;
 

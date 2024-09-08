@@ -31,7 +31,12 @@ vector<string> Enemy::getWords() {
 void Enemy::showWord(int index) { // Êä³öNPCÌ¨´Ê  
 	vector<string> word = getWords();
 	if (index < 0 || index >= word.size()) {
-		cout << "Invalid index!" << endl;
+		string temporary23 = "Invalid index!";
+		for (int i = 0; i < temporary23.length(); i++) {
+			Sleep(50);
+			cout << temporary23[i];
+		}
+		cout << endl;
 		return;
 	}
 	for (char c : word[index]) {

@@ -20,11 +20,40 @@ int Game::attack() {
     // 主攻击循环  
     while (character.getHP() > 0 && enemy->getHP() > 0) {
         int choose = 0;
-        cout << "请选择你要做的事情：" << endl;
-        cout << "1. 普通攻击" << endl;
-        cout << "2. 使用技能攻击" << endl;
-        cout << "3.使用药水回复" << endl;
-        cout << "4. 逃跑" << endl;
+        string temporary6 = "请选择你要做的事情：";
+        for (int i = 0; i < temporary6.length(); i++) {
+            Sleep(50);
+            cout << temporary6[i];
+        }
+        cout << endl;
+
+        string temporary7 = "1. 普通攻击";
+        for (int i = 0; i < temporary7.length(); i++) {
+            Sleep(50);
+            cout << temporary7[i];
+        }
+        cout << endl;
+
+        string temporary8 = "2. 使用技能攻击";
+        for (int i = 0; i < temporary8.length(); i++) {
+            Sleep(50);
+            cout << temporary8[i];
+        }
+        cout << endl;
+
+        string temporary9 = "3.使用药水回复";
+        for (int i = 0; i < temporary9.length(); i++) {
+            Sleep(50);
+            cout << temporary9[i];
+        }
+        cout << endl;
+
+        string temporary10 = "4. 逃跑";
+        for (int i = 0; i < temporary10.length(); i++) {
+            Sleep(50);
+            cout << temporary10[i];
+        }
+        cout << endl;
         choose=getInt();
 
         switch (choose) {
@@ -34,7 +63,11 @@ int Game::attack() {
             break;
         }
         case 2: {
-            cout << "你想使用哪个技能？" << endl;
+            string temporary11 = "你想使用哪个技能？";
+            for (int i = 0; i < temporary11.length(); i++) {
+                Sleep(50);
+                cout << temporary11[i];
+            }
             for (size_t i = 0; i < store.skills.skill.size(); ++i) {
                 cout << (i + 1) << ". " << store.skills.skill[i] << endl; // 显示技能列表  
             }
@@ -49,21 +82,47 @@ int Game::attack() {
             else {
                 if (character.getMP())
                 {
-                    cout << "你还没有掌握这个技能。" << endl;
+                    string temporary12 = "你还没有掌握这个技能。";
+                    for (int i = 0; i < temporary12.length(); i++) {
+                        Sleep(50);
+                        cout << temporary12[i];
+                    }
+                    cout << endl;
                 }
                 else
                 {
-                    cout << "你没有足够能量" << endl;
+                    string temporary13 = "你没有足够能量";
+                    for (int i = 0; i < temporary13.length(); i++) {
+                        Sleep(50);
+                        cout << temporary13[i];
+                    }
+                    cout << endl;
                 }
             }
             break;
         }
-        case 3:
-        {
+        case 3: {  
             int potindex = 0;
-            cout << "你想用哪个药水?" << endl;
-            cout << "1.血量药水" << endl;
-            cout << "2.能量药水" << endl;
+            string temporary14 = "你想用哪个药水?";
+            for (int i = 0; i < temporary14.length(); i++) {
+                Sleep(50);
+                cout << temporary14[i];
+            }
+            cout << endl;
+
+            string temporary15 = "1.血量药水";
+            for (int i = 0; i < temporary15.length(); i++) {
+                Sleep(50);
+                cout << temporary15[i];
+            }
+            cout << endl;
+
+            string temporary16 = "2.能量药水";
+            for (int i = 0; i < temporary16.length(); i++) {
+                Sleep(50);
+                cout << temporary16[i];
+            }
+            cout << endl;
             do {
                 potindex=getInt();
             } while (potindex != 1 && potindex != 2);
@@ -76,7 +135,12 @@ int Game::attack() {
                 }
                 else
                 {
-                    cout << "你没有血量药水" << endl;
+                    string temporary17 = "你没有血量药水";
+                    for (int i = 0; i < temporary17.length(); i++) {
+                        Sleep(50);
+                        cout << temporary17[i];
+                    }
+                    cout << endl;
                     break;
                 }
             }
@@ -89,19 +153,36 @@ int Game::attack() {
                 }
                 else
                 {
-                    cout << "你没有能量药水" << endl;
+                    string temporary18 = "你没有能量药水";
+                    for (int i = 0; i < temporary18.length(); i++) {
+                        Sleep(50);
+                        cout << temporary18[i];
+                    }
+                    cout << endl;
                     break;
                 }
             }
             break;
         }
-        case 4:
-            cout << "成功逃跑！" << endl;
+        case 4: {
+            string temporary19 = "成功逃跑！";
+            for (int i = 0; i < temporary19.length(); i++) {
+                Sleep(50);
+                cout << temporary19[i];
+            }
+            cout << endl;
             return 0; // 退出攻击方法  
-        default:
-            cout << "错误：无效命令。" << endl;
+        }
+        default: {
+            string temporary20 = "错误：无效命令。";
+            for (int i = 0; i < temporary20.length(); i++) {
+                Sleep(50);
+                cout << temporary20[i];
+            }
+            cout << endl;
             break;
         }
+    }
 
         // 检查角色在攻击后是否仍然存活  
         if (enemy->getHP() > 0) {
@@ -112,12 +193,22 @@ int Game::attack() {
 
     // 检查战斗结果  
     if (character.getHP() > 0) {
-        cout << "怪物被击杀！777" << endl;
+        string temporary21 = "怪物被击杀！777";
+        for (int i = 0; i < temporary21.length(); i++) {
+            Sleep(50);
+            cout << temporary21[i];
+        }
+        cout << endl;
         enemy->showWord(2); // 显示敌人被击败的对话  
         return 1;
     }
     else {
-        cout << "你被击杀了。" << endl;
+        string temporary22 = "你被击杀了。";
+        for (int i = 0; i < temporary22.length(); i++) {
+            Sleep(50);
+            cout << temporary22[i];
+        }
+        cout << endl;
         return 2;
     }
 

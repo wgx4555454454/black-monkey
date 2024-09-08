@@ -2,6 +2,7 @@
 #include<iomanip>
 #include <string>
 #include <filesystem>
+#include <windows.h>  
 #include "Menu.h"
 
 using namespace std;
@@ -10,9 +11,26 @@ int getInt();
 void Game::game() {
 	system("pause");
 	system("cls");
-	cout << "welcome to our game" << endl;
-	cout << "this is a world about RPG" << endl;
-	cout << "please enjoy your game :)" << endl;
+	string temporary24 = "welcome to our game";
+	for (int i = 0; i < temporary24.length(); i++) {
+		Sleep(50);
+		cout << temporary24[i];
+	}
+	cout << endl;
+
+	string temporary25 = "this is a world about RPG";
+	for (int i = 0; i < temporary25.length(); i++) {
+		Sleep(50);
+		cout << temporary25[i];
+	}
+	cout << endl;
+
+	string temporary26 = "please enjoy your game : ";
+	for (int i = 0; i < temporary26.length(); i++) {
+		Sleep(50);
+		cout << temporary26[i];
+	}
+	cout << endl;
 	showBeginPlot();//故事情节
 
 	system("pause");//接下来开始进入地图并持续移动
@@ -26,7 +44,13 @@ void Game::game() {
 	int passes = character.getPasses();
 	while(passes<3&&chooseC==0){
 		switch (passes) {
-		case 0:cout << "第一关：" << endl;
+		case 0: {
+			string temporary27 = "第一关：";
+			for (int i = 0; i < temporary27.length(); i++) {
+				Sleep(50);
+				cout << temporary27[i];
+			}
+			cout << endl;
 			system("pause");
 			ending = move(map.getMap1(), map.getMap1_s());
 			if (ending == 1)
@@ -38,22 +62,16 @@ void Game::game() {
 			if (ending == 2)
 				characterLive = 0;
 			break;
-		case 1:
-			cout << "第二关：" << endl;
+		}
+		case 1: {
+			string temporary28 = "第二关：";
+			for (int i = 0; i < temporary28.length(); i++) {
+				Sleep(50);
+				cout << temporary28[i];
+			}
+			cout << endl;
 			system("pause");
-			ending=move(map.getMap2(),map.getMap2_s());
-			if (ending == 1)
-				passes++;
-
-			if (ending == 0)
-				chooseC = 1;
-
-			if (ending == 2)
-				characterLive = 0;
-			break;
-		case 2:cout << "第三关：" << endl;
-			system("pause");
-			ending=move(map.getMap3(),map.getMap3_s());
+			ending = move(map.getMap2(), map.getMap2_s());
 			if (ending == 1)
 				passes++;
 
@@ -64,13 +82,44 @@ void Game::game() {
 				characterLive = 0;
 			break;
 		}
+		case 2: {
+			string temporary29 = "第三关：";
+			for (int i = 0; i < temporary29.length(); i++) {
+				Sleep(50);
+				cout << temporary29[i];
+			}
+			cout << endl;
+			system("pause");
+			ending = move(map.getMap3(), map.getMap3_s());
+			if (ending == 1)
+				passes++;
+
+			if (ending == 0)
+				chooseC = 1;
+
+			if (ending == 2)
+				characterLive = 0;
+			break;
+		}
+		}
 		if (chooseC == 1) {
 			system("cls");
-			cout << "1.继续  2.退出 3.下一关" << endl;
+			string temporary30 = "1.继续  2.退出 3.下一关";
+			for (int i = 0; i < temporary30.length(); i++) {
+				Sleep(50);
+				cout << temporary30[i];
+			}
+			cout << endl;
 			do{
 				choose_C = getInt();
-				if (choose_C != 1 && choose_C != 2 && choose_C != 3)
-					cout << "Error!请输入1-3中的一个数" << endl;
+				if (choose_C != 1 && choose_C != 2 && choose_C != 3) {
+					string temporary31 = "Error!请输入1-3中的一个数";
+					for (int i = 0; i < temporary31.length(); i++) {
+						Sleep(50);
+						cout << temporary31[i];
+					}
+					cout << endl;
+				}
 			} while (choose_C != 1 && choose_C != 2 && choose_C != 3);
 			switch (choose_C) {
 			case 1:
@@ -85,17 +134,38 @@ void Game::game() {
 				passes++;
 				break;
 			default:
-				cout << "Error!" << endl;
+				string temporary32 = "Error!";
+				for (int i = 0; i < temporary32.length(); i++) {
+					Sleep(50);
+					cout << temporary32[i];
+				}
+				cout << endl;
 			}
 		}
 		if (characterLive == 0) {
 			system("cls");
-			cout << "角色已死亡！" << endl;
-			cout<<"1.退出  2.从头开始" << endl;
+			string temporary33 = "角色已死亡！";
+			for (int i = 0; i < temporary33.length(); i++) {
+				Sleep(50);
+				cout << temporary33[i];
+			}
+			cout << endl;
+			string temporary34 = "1.退出  2.从头开始";
+			for (int i = 0; i < temporary34.length(); i++) {
+				Sleep(50);
+				cout << temporary34[i];
+			}
+			cout << endl;
 			do{
 				choose_Character=getInt();
-				if (choose_Character != 1 && choose_Character != 2)
-					cout << "Error！请输入1-2" << endl;
+				if (choose_Character != 1 && choose_Character != 2) {
+					string temporary35 = "Error！请输入1-2";
+					for (int i = 0; i < temporary35.length(); i++) {
+						Sleep(50);
+						cout << temporary35[i];
+					}
+					cout << endl;
+				}
 			} while (choose_Character != 1 && choose_Character != 2);
 
 			switch (choose_Character) {
@@ -112,7 +182,12 @@ void Game::game() {
 				passes = 0;
 				break;
 			default:
-				cout << "Error!" << endl;
+				string temporary32 = "Error!";
+				for (int i = 0; i < temporary32.length(); i++) {
+					Sleep(50);
+					cout << temporary32[i];
+				}
+				cout << endl;
 			}
 		}
 		character.setPasses(passes);
