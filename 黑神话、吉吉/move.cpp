@@ -85,6 +85,8 @@ int Game::move(vector<string> map, vector<string> map_s) {
         if (other_Exit == 1)
             break;
         // 检查新位置的有效性  
+        int preY=playerY;
+        int preX = playerX;
         if (map_s[newY][newX] != '+') {
             displayP(newX, newY,map_s);
             playerX = newX;
@@ -92,9 +94,10 @@ int Game::move(vector<string> map, vector<string> map_s) {
             // 检查是否与@碰撞  
             if (map_s[newY][newX] == '@') {
                 system("cls");
-                switch(attack())
-                {
+                switch(attack()){
                 case 0://逃跑
+                    playerX = preX;
+                    playerY = preY;
                     break;
                 case 1://击败怪物
                     map_s[playerY][playerX] = ' ';//消除怪物
@@ -105,7 +108,7 @@ int Game::move(vector<string> map, vector<string> map_s) {
                 }
                 displayMap(map);
                 displayEnemy(map_s);
-                displayP(newX, newY, map_s);
+                displayP(playerX, playerY, map_s);
             }
             // 检查是否与*碰撞  
             if (map_s[newY][newX] == '*') {
