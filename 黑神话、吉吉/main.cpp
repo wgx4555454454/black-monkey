@@ -126,7 +126,6 @@ void welcomePage()
 	}
 
 	cout << endl;
-
 	string strTemporary55 = "║ github地址: https://github.com/wgx4555454454/black-monkey.git\t\t║";
 
 	for (int i = 0; i < strTemporary55.length(); i++) {
@@ -136,7 +135,6 @@ void welcomePage()
 
 	cout << endl;
 	string strTemporary56 = "╚═══════════════════════════════════════════════════════════════════════╝";
-
 	for (int i = 0; i < strTemporary56.length(); i++) {
 		Sleep(0);
 		cout << strTemporary56[i];
@@ -146,6 +144,8 @@ void welcomePage()
 
 	// 恢复默认的控制台文本颜色  
 	//SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
+
+}
 
 
 void setColor(int color) {
