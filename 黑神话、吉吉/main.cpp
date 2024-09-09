@@ -104,7 +104,7 @@ void welcomePage()
 	}
 
 	cout << endl;
-	string temporary54 = "║ 作者: \t\t\t\t\t\t\t\t║";
+	string temporary54 = "║ 作者: 王桂鑫 袁东霖 王杰 程传哲 扬杨\t\t\t\t\t║";
 	for (int i = 0; i < temporary54.length(); i++) {
 		Sleep(0);
 		cout << temporary54[i];
