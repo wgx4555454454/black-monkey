@@ -12,6 +12,7 @@ private://h
 	int MP;//mana points
 	int ATK;//attack;
 	int passes;//通过的关卡
+
 	int Coins=35;//金钱
 	int HpotionNum = 0;//血量药水
 	int MpotionNum = 0;//能量药水
@@ -20,7 +21,9 @@ private://h
 	bool Matter_Frost_Piercing=false;//是否学习冰霜穿刺
 public:
 	Role() : HP(0), MP(0), ATK(0), passes(0){};
+
 	~Role() {};
+
 	Role(int hp, int mp, int atk, int passes_s) {
 		HP = hp;
 		MP = mp;

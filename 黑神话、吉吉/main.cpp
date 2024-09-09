@@ -4,23 +4,27 @@
 #include <filesystem>  
 #include <windows.h>  
 #include <limits>  
+#include <thread>     // 用于延迟功能
+#include <chrono>     // 用于延迟时间
 #include"Menu.h"
 
 using namespace std;
 
 int getInt() {
-	string x;
+	string strX;
+
 	while (true) {
-		getline(cin, x); // 使用 getline 读取整行输入  
+		getline(cin, strX); // 使用 getline 读取整行输入  
 		bool valid = true;
 
 		// 检查输入是否为有效的整数  
-		if (x.empty() || (x[0] != '-' && !isdigit(x[0]))) {
+		if (strX.empty() || (strX[0] != '-' && !isdigit(strX[0]))) {
 			valid = false;
 		}
+
 		else {
-			for (size_t i = 1; i < x.length(); ++i) {
-				if (!isdigit(x[i])) {
+			for (size_t i = 1; i < strX.length(); ++i) {
+				if (!isdigit(strX[i])) {
 					valid = false;
 					break;
 				}
@@ -28,7 +32,7 @@ int getInt() {
 		}
 
 		if (valid) {
-			return stoi(x); // string to int  
+			return stoi(strX); // string to int  
 		}
 	}
 }
@@ -42,7 +46,7 @@ void welcomePage()
 	SetConsoleTextAttribute(hConsole, FOREGROUND_RED);
 
 	//黑神话页面图
-	vector<string> page = {
+	vector<string> strPage = {
 	"╭──────────────────────────────────────────────────────────────────────────────────╮",
 	"│   HHHHHHHHHHHHHHHHHHH          S            SS                             HHHH  │",//1
 	"│   H HH     H     HH H           S           SS                        HHHHH      │",//2
@@ -60,68 +64,82 @@ void welcomePage()
 	"╰──────────────────────────────────────────────────────────────────────────────────╯",
 	};
 
-	for (int i = 0; i < page.size(); i++) {
+	for (int i = 0; i < strPage.size(); i++) {
 		Sleep(36);
-		cout << page[i] << endl;
+		cout << strPage[i] << endl;
 	}
 
 	// 设置文本颜色为绿色  
 	SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN);
 
 	cout << endl;
-	string temporary49 = "╔═══════════════════════════════════════════════════════════════════════╗";
-	for (int i = 0; i < temporary49.length(); i++) {
+	string strTemporary49 = "╔═══════════════════════════════════════════════════════════════════════╗";
+
+	for (int i = 0; i < strTemporary49.length(); i++) {
 		Sleep(0);
-		cout << temporary49[i];
+		cout << strTemporary49[i];
 	}
 
 	cout << endl;
-	string temporary50 = "║\t\t***中国海洋大学2024夏季学期c++课程设计***\t\t║";
-	for (int i = 0; i < temporary50.length(); i++) {
+
+	string strTemporary50 = "║\t\t***中国海洋大学2024夏季学期c++课程设计***\t\t║";
+
+	for (int i = 0; i < strTemporary50.length(); i++) {
 		Sleep(0);
-		cout << temporary50[i];
+		cout << strTemporary50[i];
 	}
 
 	cout << endl;
-	string temporary51 = "║ 文字版《黑神话·悟空》\t\t\t\t\t\t\t║";
-	for (int i = 0; i < temporary51.length(); i++) {
+
+	string strTemporary51 = "║ 文字版《黑神话·悟空》\t\t\t\t\t\t\t║";
+
+	for (int i = 0; i < strTemporary51.length(); i++) {
 		Sleep(0);
-		cout << temporary51[i];
+		cout << strTemporary51[i];
 	}
 
 	cout << endl;
-	string temporary52 = "║ 游戏介绍：一个简单的文字RPG。\t\t\t\t\t\t║";
-	for (int i = 0; i < temporary52.length(); i++) {
+
+	string strTemporary52 = "║ 游戏介绍：一个简单的文字RPG。\t\t\t\t\t\t║";
+
+	for (int i = 0; i < strTemporary52.length(); i++) {
 		Sleep(0);
-		cout << temporary52[i];
+		cout << strTemporary52[i];
 	}
 
 	cout << endl;
-	string temporary53 = "║ 版本：1.0\t\t\t\t\t\t\t\t║";
-	for (int i = 0; i < temporary53.length(); i++) {
+
+	string strTemporary53 = "║ 版本：1.0\t\t\t\t\t\t\t\t║";
+
+	for (int i = 0; i < strTemporary53.length(); i++) {
 		Sleep(0);
-		cout << temporary53[i];
+		cout << strTemporary53[i];
 	}
 
 	cout << endl;
-	string temporary54 = "║ 作者: 王桂鑫 袁东霖 王杰 程传哲 扬杨\t\t\t\t\t║";
-	for (int i = 0; i < temporary54.length(); i++) {
+
+	string strTemporary54 = "║ 作者: 王桂鑫 袁东霖 王杰 程传哲 扬杨\t\t\t\t\t║";
+
+	for (int i = 0; i < strTemporary54.length(); i++) {
 		Sleep(0);
-		cout << temporary54[i];
+		cout << strTemporary54[i];
 	}
 
 	cout << endl;
-	string temporary55 = "║ github地址: https://github.com/wgx4555454454/black-monkey.git\t\t║";
-	for (int i = 0; i < temporary55.length(); i++) {
+
+	string strTemporary55 = "║ github地址: https://github.com/wgx4555454454/black-monkey.git\t\t║";
+
+	for (int i = 0; i < strTemporary55.length(); i++) {
 		Sleep(0);
-		cout << temporary55[i];
+		cout << strTemporary55[i];
 	}
 
 	cout << endl;
-	string temporary56 = "╚═══════════════════════════════════════════════════════════════════════╝";
-	for (int i = 0; i < temporary56.length(); i++) {
+	string strTemporary56 = "╚═══════════════════════════════════════════════════════════════════════╝";
+
+	for (int i = 0; i < strTemporary56.length(); i++) {
 		Sleep(0);
-		cout << temporary56[i];
+		cout << strTemporary56[i];
 	}
 
 	cout << endl;
@@ -129,11 +147,6 @@ void welcomePage()
 	// 恢复默认的控制台文本颜色  
 	//SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
 
-}
-#include <iostream>
-#include <windows.h>  // 用于设置控制台颜色
-#include <thread>     // 用于延迟功能
-#include <chrono>     // 用于延迟时间
 
 void setColor(int color) {
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);

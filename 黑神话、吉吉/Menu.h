@@ -15,10 +15,11 @@ using namespace std;
 
 class Menu {
 private:
-	string username;
-	string base_adress = "C:\\黑神话";
-	string user_adress;
-	Game* game = NULL;
+	string strUsername;
+	string strBase_adress = "C:\\黑神话";
+	string strUser_adress;
+
+	Game* ptrGame = NULL;
 public:
 	void menu();
 };

@@ -9,9 +9,11 @@ using namespace std;
 class Skills {
 public:
     // 随便想几个技能名，技能伤害及状态  
-    vector<string> skill = { "烈焰斩", "冰霜穿刺" };
-    vector<int> hurt = { 60, 60 };
-    vector<int> price= { 20, 20 };
+    vector<string> strSkillname = { "烈焰斩", "冰霜穿刺" };
+
+    vector<int> hurt = { 60, 60 };//技能造成的伤害
+
+    vector<int> price= { 20, 20 };//技能的价格
 
     // 设置技能状态  
     void setSkill(int index);
