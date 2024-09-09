@@ -15,13 +15,14 @@ int Game::attack() {
     srand(static_cast<unsigned int>(time(0))); // 随机数种子  
     int bossID = rand() % 7; // 随机选择一个敌人 
     Enemy *enemy = &_enemy[bossID];
-     
+    int choose_Skill = 0;
     enemy->showWord(0); // 显示敌人的对话  
 
     // 主攻击循环  
     while (character.getHP() > 0 && enemy->getHP() > 0) {
         cout << "主角：" << endl;
         cout << "     血量：" << character.getHP() << endl;
+        cout << "     能量：" << character.getMP() << endl;
         cout << "怪物：" << endl;
         cout << "     血量：" << enemy->getHP() << endl;
         int choose = 0;
@@ -107,68 +108,51 @@ int Game::attack() {
             cout << "你对怪物造成了 " << character.getATK() << " 点伤害。" << endl;
             break;
         }
-        case 2: {
-            string temporary11 = "你想使用哪个技能？";
-            for (int i = 0; i < temporary11.length(); i++) {
-                // 如果检测到键盘按下
-                if (_kbhit()) {
-                    char key = _getch();  // 获取按下的键
-                    if (key == '\r') {  // 判断是否按下回车键
-                        cout << temporary11.substr(i) << endl;  // 输出剩下的全部内容
-                        break;
+        case 2: 
+            cout << "你想使用哪个技能？" << endl;
+            cout << "1.烈焰斩     " << ((character.get_Flame_Slash()) ? "已获得" : "未获得") << endl;
+            cout << "2.冰霜穿刺   " << ((character.get_Frost_Piercing()) ? "已获得" : "未获得") << endl;
+            cout << "3.退出" << endl;
+            do {
+                choose_Skill = getInt();
+                if (choose_Skill != 1 && choose_Skill != 2 && choose_Skill != 3)
+                    cout << "Error!请输入1-3" << endl;
+            } while (choose_Skill != 1 && choose_Skill != 2 && choose_Skill != 3);
+            switch (choose_Skill) {
+            case 1:
+                if (character.get_Flame_Slash()) {
+                    if (character.getMP() >= 10) {
+                        cout << "你使用烈焰斩对敌人造成了" << store.skills.hurt[0] << "点伤害!" << endl;
+                        enemy->setHP(enemy->getHP() - store.skills.hurt[0]);
+                        character.setMP(character.getMP() - 10);
                     }
+                    else
+                        cout << "你的魔法不足！" << endl;
+
                 }
-                Sleep(6);
-                cout << temporary11[i];
-            }
-            cout << endl;
-            for (size_t i = 0; i < store.skills.skill.size(); ++i) {
-                cout << (i + 1) << ". " << store.skills.skill[i] << endl; // 显示技能列表  
-            }
-            int skillIndex = 0;
-            skillIndex=getInt();
-            // 减去1以匹配0基索引  
-            if (store.skills.checkSkill(skillIndex - 1) && (character.getMpotionNum() % 10)) {
-                character.setMP(character.getMP() - 10);
-                enemy->setHP(enemy->getHP() - store.skills.getSkillhurt(skillIndex - 1)); // 使用技能造成伤害  
-                cout << "你对怪物造成了 " << store.skills.getSkillhurt(skillIndex - 1) << " 点伤害。" << endl;
-            }
-            else {
-                if (character.getMP()){
-                    string temporary12 = "你还没有掌握这个技能。";
-                    for (int i = 0; i < temporary12.length(); i++) {
-                        // 如果检测到键盘按下
-                        if (_kbhit()) {
-                            char key = _getch();  // 获取按下的键
-                            if (key == '\r') {  // 判断是否按下回车键
-                                cout << temporary12.substr(i) << endl;  // 输出剩下的全部内容
-                                break;
-                            }
-                        }
-                        Sleep(6);
-                        cout << temporary12[i];
+                else
+                    cout << "你还没有获得该技能！" << endl;
+                break;
+            case 2: {
+                if (character.get_Frost_Piercing()) {
+                    if (character.getMP() >= 10) {
+                        cout << "你使用冰霜穿刺对敌人造成了" << store.skills.hurt[1] << "点伤害!" << endl;
+                        enemy->setHP(enemy->getHP() - store.skills.hurt[1]);
                     }
-                    cout << endl;
+                    else
+                        cout << "你的魔法不足！" << endl;
+
                 }
-                else{
-                    string temporary13 = "你没有足够能量";
-                    for (int i = 0; i < temporary13.length(); i++) {
-                        // 如果检测到键盘按下
-                        if (_kbhit()) {
-                            char key = _getch();  // 获取按下的键
-                            if (key == '\r') {  // 判断是否按下回车键
-                                cout << temporary13.substr(i) << endl;  // 输出剩下的全部内容
-                                break;
-                            }
-                        }
-                        Sleep(6);
-                        cout << temporary13[i];
-                    }
-                    cout << endl;
-                }
+                else
+                    cout << "你还没有获得该技能！" << endl;
+                break;
+            }
+            case 3:
+                break;
+            default:
+                break;
             }
             break;
-        }
         case 3: {  
             int potindex = 0;
             string temporary14 = "你想用哪个药水?";
@@ -220,7 +204,7 @@ int Game::attack() {
             } while (potindex != 1 && potindex != 2);
             if (potindex == 1){
                 if (character.getHpotionNum()){
-                    character.setHP(character.getHP() + 1 * 10);
+                    character.setHP(100);
                     character.setHpotionNum(character.getHpotionNum() - 1);
                 }
                 else{
@@ -243,7 +227,7 @@ int Game::attack() {
             }
             if (potindex == 2){
                 if (character.getMpotionNum()){
-                    character.setMP(character.getMP() + 1 * 10);
+                    character.setMP(character.getMP() + 30);
                     character.setMpotionNum(character.getMpotionNum() - 1);
                 }
                 else{

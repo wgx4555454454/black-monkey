@@ -10,6 +10,8 @@
 
 //存档在桌面上
 using namespace std;
+void setColor(int);
+void gameEndThankYou();
 
 void Menu::menu() {
 
@@ -105,7 +107,7 @@ void Menu::menu() {
             game.reset(); // 释放之前的实例  
             game = make_shared<Game>(); // 创建新的 Game 实例
             game->game();
-
+            gameEndThankYou();
 
             //保存游戏存档
             if (game != nullptr) {
@@ -180,6 +182,7 @@ void Menu::menu() {
                 ifs.read(reinterpret_cast<char*>(&(game->character)), sizeof(Role)); // 使用 get() 获取裸指针  
                 ifs.close();
                 game->game();
+                gameEndThankYou();
 
                 //保存游戏存档
                 if (game != nullptr) {

@@ -111,7 +111,7 @@ void welcomePage()
 	}
 
 	cout << endl;
-	string temporary55 = "║ 邮箱: \t\t\t\t\t\t\t\t║";
+	string temporary55 = "║ github地址: https://github.com/wgx4555454454/black-monkey.git\t\t║";
 	for (int i = 0; i < temporary55.length(); i++) {
 		Sleep(0);
 		cout << temporary55[i];
@@ -130,10 +130,47 @@ void welcomePage()
 	//SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
 
 }
+#include <iostream>
+#include <windows.h>  // 用于设置控制台颜色
+#include <thread>     // 用于延迟功能
+#include <chrono>     // 用于延迟时间
+
+void setColor(int color) {
+	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(hConsole, color);
+}
+
+void gameEndThankYou() {
+	system("cls");
+	setColor(10);  // 设置绿色
+	cout << "游戏已经结束，但故事依然在继续..." << endl << endl;
+	this_thread::sleep_for(chrono::milliseconds(10));  
+
+	setColor(11);  // 设置青色
+	cout << "感谢您一路以来的支持与陪伴。" << endl << endl;
+	this_thread::sleep_for(chrono::milliseconds(20));  
+
+	setColor(14);  // 设置黄色
+	cout << "没有您的参与，我们的游戏不会如此精彩。" << endl << endl;
+	this_thread::sleep_for(chrono::milliseconds(20));  
+
+	setColor(12);  // 设置红色
+	cout << "感谢徐文华老师的悉心指导" << endl << endl;
+	this_thread::sleep_for(chrono::milliseconds(15));  
+
+	setColor(11);  // 设置青色
+	cout << "希望我们能在未来的旅程中再次相遇！" << endl << endl;
+	this_thread::sleep_for(chrono::milliseconds(25)); 
+
+	setColor(14);  // 设置黄色
+	cout << "期待您的再次光临，再见！" << endl << endl;
+	this_thread::sleep_for(chrono::milliseconds(3));
+
+	setColor(7);   // 恢复默认颜色
+	system("pause");
+}
 
 int main() {
-	//welcomePage();//黑神话页面图
-
 	Menu _menu;
 	_menu.menu();
 	return 0;

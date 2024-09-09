@@ -143,7 +143,7 @@ void Game::game() {
 		}
 		if (chooseC == 1) {
 			system("cls");
-			string temporary30 = "1.继续  2.退出 3.下一关";
+			string temporary30 = "1.继续  2.保存并退出  3.下一关  ";
 			for (int i = 0; i < temporary30.length(); i++) {
 				// 如果检测到键盘按下
 				if (_kbhit()) {

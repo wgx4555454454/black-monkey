@@ -54,13 +54,17 @@ void displayP(int X,int Y,vector<string> map_s)
 // 主函数  
 int Game::move(vector<string> map, vector<string> map_s) {
     int ending_Attack = 0;
+    
     char input;
-    int newX = playerX; //记录X坐标
-    int newY = playerY; //记录Y坐标
+    int newX = playerX = 2; //记录新X坐标
+    int newY = playerY = 1; //记录新Y坐标
+    
     displayMap(map);
     displayEnemy(map_s);
     displayP(newX, newY, map_s);
     while (true) {
+        int preY = playerY;//记录旧Y坐标
+        int preX = playerX;//记录旧X坐标
         input = _getch(); // 获取用户输入，不显示在屏幕上  
         int other_Exit = 0;
         // 根据输入更新位置  
@@ -74,19 +78,23 @@ int Game::move(vector<string> map, vector<string> map_s) {
         case 'd': newX++; 
             break; // 右 
         case 'b':Buy();
+            displayMap(map);
+            displayEnemy(map_s);
+            displayP(playerX, playerY, map_s);
             other_Exit = 1;
             break;
         case 'm':character.showBag();
+            displayMap(map);
+            displayEnemy(map_s);
+            displayP(playerX, playerY, map_s);
             other_Exit = 1;
             break;
         case '0': return 0; // 菜单 
         default: continue; // 其他输入无效  
         }
         if (other_Exit == 1)
-            break;
+            continue;
         // 检查新位置的有效性  
-        int preY=playerY;
-        int preX = playerX;
         if (map_s[newY][newX] != '+') {
             displayP(newX, newY,map_s);
             playerX = newX;
@@ -98,9 +106,11 @@ int Game::move(vector<string> map, vector<string> map_s) {
                 case 0://逃跑
                     playerX = preX;
                     playerY = preY;
+                    newY = preY;
+                    newX = preX;
                     break;
                 case 1://击败怪物
-                    map_s[playerY][playerX] = ' ';//消除怪物
+                    map_s[newY][newX] = ' ';//消除怪物
                     character.setCoins(character.getCoins() + 5);
                     break;
                 case 2:
@@ -132,6 +142,7 @@ int Game::move(vector<string> map, vector<string> map_s) {
                 system("pause");
                 return 1; // 通过游戏  
             }
+
         }
         else {
             newX = playerX;

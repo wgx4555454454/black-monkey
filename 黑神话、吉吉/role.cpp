@@ -33,13 +33,13 @@ void Role::showBag() {
 		} while (chooseWhether != 1 && chooseWhether != 2);
 		switch (chooseWhether) {
 		case 1:
-			cout << "请选择：1.血量药水  2.魔法药水" << endl;
+			cout << "请选择：1.血量药水  2.魔法药水  3.退出" << endl;
 			
 			do {
 				choosePotion = getInt();
-				if (choosePotion != 1 && choosePotion != 2)
-					cout << "Error!请输入1-2" << endl;
-			} while (choosePotion != 1 && choosePotion != 2);
+				if (choosePotion != 1 && choosePotion != 2&&choosePotion!=3)
+					cout << "Error!请输入1-3" << endl;
+			} while (choosePotion != 1 && choosePotion != 2&&choosePotion!=3);
 			switch (choosePotion) {
 			case 1:
 				if (HpotionNum > 0) {
@@ -58,6 +58,8 @@ void Role::showBag() {
 				}
 				else
 					cout << "你的魔法药水不够！" << endl;
+				break;
+			case 3:
 				break;
 			default:
 				cout << "Error!" << endl;

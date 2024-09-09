@@ -12,7 +12,7 @@ public:
 	Skills skills;
 	int Hpotion;//血量药水价格
 	int Mpotion;//蓝条（魔法药水）价格
-	Store() :Hpotion(0), Mpotion(0) {}
+	Store() :Hpotion(2), Mpotion(1) {}
 	~Store() {}
 	void showStore();
 };
