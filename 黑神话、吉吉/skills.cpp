@@ -1,5 +1,8 @@
-﻿#include"Skills.h"
+﻿#include "stdafx.h"
+#include "Skills.h"
+
 using namespace std;
+
 void Skills::setSkill(int number){
     price[number] = 1;
 }

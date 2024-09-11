@@ -1,13 +1,7 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <conio.h>
-#include <time.h>
-#include<iostream>
-#include <windows.h>
-#include "map.h"
-#include"Menu.h"
-#include <conio.h> // for _getch() on Windows  
-#include <cstdlib> // for system()  
+#include "stdafx.h"
+#include "Map.h"
+#include "Menu.h"
+
 using namespace std;
 
 int playerX = 2;
@@ -78,14 +72,19 @@ int Game::move(vector<string> map, vector<string> map_s) {
         // 根据输入更新位置  
 
         switch (input) {
+        case 'W':
         case 'w': newY--;
             break; // 上  
+        case 'A':
         case 'a': newX--; 
             break; // 左  
+        case 'S':
         case 's': newY++; 
             break; // 下  
+        case 'D':
         case 'd': newX++; 
             break; // 右 
+        case 'B':
         case 'b':Buy();
             displayMap(map);
             displayEnemy(map_s);
@@ -93,6 +92,7 @@ int Game::move(vector<string> map, vector<string> map_s) {
 
             other_Exit = 1;
             break;
+        case 'M':
         case 'm':character.showBag();
             displayMap(map);
             displayEnemy(map_s);

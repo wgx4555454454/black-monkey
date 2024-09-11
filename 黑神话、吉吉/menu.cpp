@@ -1,20 +1,22 @@
-#include <iostream>  
-#include <iomanip>  
-#include <string>  
-#include <filesystem>  
-#include <windows.h>  
-#include <conio.h>
-#include <memory> // 需要包含这个头文件以使用智能指针 
-#include <shlobj.h>
+#include "stdafx.h"
 #include "Menu.h"  
 
-//存档在桌面上
 using namespace std;
+void welcomePage();
 void setColor(int);
 void gameEndThankYou();
+int getInt(int min, int max);   //从键盘获取int类型数据
 
+// 自定义延迟输出函数，按下回车键后立即输出剩余的内容
+void delayedPrintVector(const vector<string>& temporary, int delay = 0);
+void delayedPrintString(const string temporary, int delay = 0);
+
+
+
+//创建，读取，保存存档
 void Menu::menu() {
 
+    //存档在桌面上
     //获取桌面目录
     {
         char path[MAX_PATH];
@@ -29,56 +31,18 @@ void Menu::menu() {
     do {
         //打印首页
         system("cls");
-        void welcomePage();
-        welcomePage();
-
-        HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-        SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN);
-
-        string strTemporary1 = "   1.新的游戏  2.读取存档  3.退出游戏\n\n   ●请选择：";
-
-        for (int i = 0; i < strTemporary1.length(); i++) {
-            // 如果检测到键盘按下
-            if (_kbhit()) {
-                cout << strTemporary1.substr(i);  // 输出剩下的全部内容
-                break;
-            }
-            Sleep(2);
-            cout << strTemporary1[i];
-        }
+        welcomePage();  //首页
+        setColor(FOREGROUND_RED | FOREGROUND_GREEN);
+        delayedPrintString("   1.新的游戏  2.读取存档  3.退出游戏\n\n   ●请选择：", 2);
 
         //功能选择
-        int choice1 = 0;
-        cin >> choice1;
-
-        while (choice1 != 1 && choice1 != 2 && choice1 != 3) {
-            string strTemporary2 = "Error! 请输入 1-3 之间的数： ";
-            for (int i = 0; i < strTemporary2.length(); i++) {
-                // 如果检测到键盘按下
-                if (_kbhit()) {
-                    cout << strTemporary2.substr(i);  // 输出剩下的全部内容
-                    break;
-                }
-                Sleep(2);
-                cout << strTemporary2[i];
-            }
-            cin >> choice1;
-        }
+        int choice1 = getInt(1, 3);
 
         //case1:新存档
         switch (choice1) {
         case 1: {
-            string strTemporary3 = "   ●请输入新存档名：";
+            delayedPrintString("   ●请输入新存档名：", 2);
 
-            for (int i = 0; i < strTemporary3.length(); i++) {
-                // 如果检测到键盘按下
-                if (_kbhit()) {
-                    cout << strTemporary3.substr(i);  // 输出剩下的全部内容
-                    break;
-                }
-                Sleep(2);
-                cout << strTemporary3[i];
-            }
 
             cin >> strUsername;
 
@@ -118,40 +82,14 @@ void Menu::menu() {
 
             //存档总数为0时
             if (sum == 0) {
-                string strTemporary4 = "   没有找到存档或存档不存在…\n   ";
-                for (int i = 0; i < strTemporary4.length(); i++) {
-                    // 如果检测到键盘按下
-                    if (_kbhit()) {
-                        char key = _getch();
-                        cout << strTemporary4.substr(i) << endl;  // 输出剩下的全部内容
-                        break;
-                    }
-                    Sleep(2);
-                    cout << strTemporary4[i];
-                }
+                delayedPrintString("   没有找到存档或存档不存在…\n   ", 2);
                 system("pause");
                 continue;
             }
 
-            string strTemporary5 = "   ●请选择所需存档(0 返回)：";
-            for (int i = 0; i < strTemporary5.length(); i++) {
-                // 如果检测到键盘按下
-                if (_kbhit()) {
-                    char key = _getch();
-                    cout << strTemporary5.substr(i) << endl;  // 输出剩下的全部内容
-                    break;
-                }
-                Sleep(2);
-                cout << strTemporary5[i];
-            }
-            int m_choice = -1;
-            cin >> m_choice;
-
-            //防止出错
-            while (m_choice<0 || m_choice>sum) {
-                cout << "   请输入(0到" << sum << ")之间的数：";
-                cin >> m_choice;
-            }
+            delayedPrintString("   ●请选择所需存档(0 返回)：", 2);
+           
+            int m_choice = getInt(1, sum);
 
             if (m_choice == 0) continue;   //打开对应存档
             else {

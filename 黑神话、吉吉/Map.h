@@ -1,9 +1,5 @@
 #pragma once
-#include <iostream>
-#include <string>
-#include <cstring>
-#include<vector>
-#include <fstream>
+#include "stdafx.h"
 
 using namespace std;
 

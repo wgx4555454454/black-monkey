@@ -1,9 +1,6 @@
 #pragma once
-#include <iostream>
-#include <string>
-#include <cstring>
-#include <fstream>
-#include"Menu.h"
+#include "stdafx.h"
+#include "Menu.h"
 
 using namespace std;
  

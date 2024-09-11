@@ -1,8 +1,5 @@
 #pragma once
-#include <iostream>
-#include <string>
-#include <cstring>
-#include <fstream>
+#include "stdafx.h"
 #include"Skills.h"
 
 using namespace std;

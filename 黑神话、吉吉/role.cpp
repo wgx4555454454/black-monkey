@@ -1,7 +1,9 @@
+#include "stdafx.h"
 #include"Role.h"
 
-int getInt();
+int getInt(int min, int max);//从键盘获取int类型数据
 
+//展示背包，使用药品
 void Role::showBag() {//背包界面展示
 	system("cls");
 
@@ -30,22 +32,12 @@ void Role::showBag() {//背包界面展示
 
 	do{
 		cout << "1.使用药水 2.退出" << endl;
-
-		do {
-			chooseWhether = getInt();
-			if (chooseWhether != 1 && chooseWhether != 2)
-				cout << "Error!请输入1-2" << endl;
-
-		} while (chooseWhether != 1 && chooseWhether != 2);
+		chooseWhether = getInt(1, 2);
 		switch (chooseWhether) {
 		case 1:
 			cout << "请选择：1.血量药水  2.魔法药水  3.退出" << endl;
 			
-			do {
-				choosePotion = getInt();
-				if (choosePotion != 1 && choosePotion != 2&&choosePotion!=3)
-					cout << "Error!请输入1-3" << endl;
-			} while (choosePotion != 1 && choosePotion != 2&&choosePotion!=3);
+			choosePotion = getInt(1, 3);
 
 			switch (choosePotion) {
 			case 1:
