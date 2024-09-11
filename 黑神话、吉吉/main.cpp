@@ -129,19 +129,19 @@ void gameEndThankYou() {
 	system("cls");
 	setColor(10);  // 设置绿色
 	cout << "游戏已经结束，但故事依然在继续..." << endl << endl;
-	Sleep(10);  
+	Sleep(36);  
 
 	setColor(11);  // 设置青色
 	cout << "感谢您一路以来的支持与陪伴。" << endl << endl;
-	Sleep(20);  
+	Sleep(36);  
 
 	setColor(14);  // 设置黄色
 	cout << "没有您的参与，我们的游戏不会如此精彩。" << endl << endl;
-	Sleep(20);  
+	Sleep(36);  
 
 	setColor(12);  // 设置红色
 	cout << "感谢徐文华老师的悉心指导" << endl << endl;
-	Sleep(15);  
+	Sleep(36);  
 
 	setColor(11);  // 设置青色
 	cout << "希望我们能在未来的旅程中再次相遇！" << endl << endl;

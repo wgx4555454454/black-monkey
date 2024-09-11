@@ -62,7 +62,7 @@ void Game::game() {
         //上帝模式中的选项
         if (chooseC == 1) {
             system("cls");
-            delayedPrintString("1.继续  2.保存并退出  3.下一关  ", 16);
+            delayedPrintString("1.继续  2.保存并退出  3.下一关  \n请选择：", 16);
             int choose_C = getInt(1, 3); //获取选择
 
             switch (choose_C) {

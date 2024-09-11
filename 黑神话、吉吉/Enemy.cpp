@@ -32,7 +32,7 @@ void Enemy::showWord(int index) { // 输出NPC台词
 
 	vector<string> strWord = getWords();
 
-	if (index < 0 || index >= strWord.size()) {
+	if (index < 0 || index >= strWord.size()) {	//检验内容是否越界
 		string strTemporary23 = "Invalid index!";
 		delayedPrintString(strTemporary23, 20);
 		cout << endl;

@@ -124,7 +124,7 @@ int Game::attack() {
                     character.setHpotionNum(character.getHpotionNum() - 1);
                 }
                 else {
-                    delayedPrintString("你没有血量药水");
+                    delayedPrintString("你没有血量药水\n");
                 }
             }
             else if (potindex == 2) {
@@ -133,20 +133,20 @@ int Game::attack() {
                     character.setMpotionNum(character.getMpotionNum() - 1);
                 }
                 else {
-                    delayedPrintString("你没有能量药水");
+                    delayedPrintString("你没有能量药水\n");
                 }
             }
             break;
         }
         case 4: {  // 逃跑
-            delayedPrintString("成功逃跑！");
+            delayedPrintString("成功逃跑！\n");
             return 0;
         }
         }
 
         // 检查怪物是否存活
         if (ptrEnemy->getHP() > 0) {
-            cout << "怪物造成了 " << ptrEnemy->getATK() << " 点伤害。" << endl;
+            cout << "怪物造成了 " << ptrEnemy->getATK() << " 点伤害。\n" << endl;
             character.setHP(character.getHP() - ptrEnemy->getATK());
         }
         system("pause");
@@ -155,14 +155,14 @@ int Game::attack() {
 
     // 战斗结束后的处理
     if (character.getHP() > 0) {
-        delayedPrintString("怪物被击杀！");
+        delayedPrintString("怪物被击杀！\n");
         ptrEnemy->showWord(1); // 显示敌人被击败的对话
-        cout << "你获得了5个金币！" << endl;
+        cout << "你获得了5个金币！\n" << endl;
         system("pause");
         return 1;
     }
     else {
-        delayedPrintString("你被击杀了。");
+        delayedPrintString("你被击杀了。\n");
         ptrEnemy->showWord(2);
         system("pause");
         return 2;
