@@ -18,10 +18,12 @@ int getInt() {
 		bool valid = true;
 
 		// 检查输入是否为有效的整数  
-		if (strX.empty() || (strX[0] != '-' && !isdigit(strX[0]))) {
+		if (strX.empty()) {
+			continue;
+		}
+		if (strX[0] != '-' && !isdigit(strX[0])) {
 			valid = false;
 		}
-
 		else {
 			for (size_t i = 1; i < strX.length(); ++i) {
 				if (!isdigit(strX[i])) {
@@ -30,10 +32,10 @@ int getInt() {
 				}
 			}
 		}
-
 		if (valid) {
 			return stoi(strX); // string to int  
 		}
+		cout << "出错了，请重新输入：";
 	}
 }
 

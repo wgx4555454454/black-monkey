@@ -35,31 +35,13 @@ void Menu::menu() {
         HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
         SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN);
 
-        string strNewGameMenu = "   1.新的游戏  2.读取存档  3.退出游戏";
-
-        for (int i = 0; i < strNewGameMenu.length(); i++) {
-            // 如果检测到键盘按下
-            if (_kbhit()) {
-                char key = _getch();  // 获取按下的键
-                if (key == '\r') {  // 判断是否按下回车键
-                    cout << strNewGameMenu.substr(i) << endl;  // 输出剩下的全部内容
-                    break;
-                }
-            }
-            Sleep(2);
-            cout << strNewGameMenu[i];
-        }
-
-        string strTemporary1 = "\n\n   ●请选择：";
+        string strTemporary1 = "   1.新的游戏  2.读取存档  3.退出游戏\n\n   ●请选择：";
 
         for (int i = 0; i < strTemporary1.length(); i++) {
             // 如果检测到键盘按下
             if (_kbhit()) {
-                char key = _getch();  // 获取按下的键
-                if (key == '\r') {  // 判断是否按下回车键
-                    cout << strTemporary1.substr(i) << endl;  // 输出剩下的全部内容
-                    break;
-                }
+                cout << strTemporary1.substr(i);  // 输出剩下的全部内容
+                break;
             }
             Sleep(2);
             cout << strTemporary1[i];
@@ -74,33 +56,25 @@ void Menu::menu() {
             for (int i = 0; i < strTemporary2.length(); i++) {
                 // 如果检测到键盘按下
                 if (_kbhit()) {
-                    char key = _getch();  // 获取按下的键
-                    if (key == '\r') {  // 判断是否按下回车键
-                        cout << strTemporary2.substr(i) << endl;  // 输出剩下的全部内容
-                        break;
-                    }
+                    cout << strTemporary2.substr(i);  // 输出剩下的全部内容
+                    break;
                 }
                 Sleep(2);
                 cout << strTemporary2[i];
             }
-
-            cout << endl;
             cin >> choice1;
         }
 
         //case1:新存档
         switch (choice1) {
-        case 1:{
+        case 1: {
             string strTemporary3 = "   ●请输入新存档名：";
 
             for (int i = 0; i < strTemporary3.length(); i++) {
                 // 如果检测到键盘按下
                 if (_kbhit()) {
-                    char key = _getch();  // 获取按下的键
-                    if (key == '\r') {  // 判断是否按下回车键
-                        cout << strTemporary3.substr(i) << endl;  // 输出剩下的全部内容
-                        break;
-                    }
+                    cout << strTemporary3.substr(i);  // 输出剩下的全部内容
+                    break;
                 }
                 Sleep(2);
                 cout << strTemporary3[i];
@@ -125,6 +99,7 @@ void Menu::menu() {
             }
 
             break;
+
         }
         case 2: {   //读取存档
             strGame.reset(); // 释放之前的实例  
@@ -134,24 +109,22 @@ void Menu::menu() {
             cout << endl;           //界面更美观
 
             //循环遍历文件夹，查找存档并记录
-            for (const auto& entry : filesystem::recursive_directory_iterator(strBase_adress)){
-                if (entry.path().filename() == "basic.txt"){
+            for (const auto& entry : filesystem::recursive_directory_iterator(strBase_adress)) {
+                if (entry.path().filename() == "basic.txt") {
                     cout << "   *" << ++sum << ": " << (entry.path().parent_path().filename().string()) << endl;
                     str.push_back(entry.path().parent_path().filename().string());
                 }
             }
 
             //存档总数为0时
-            if (sum == 0){
+            if (sum == 0) {
                 string strTemporary4 = "   没有找到存档或存档不存在…\n   ";
                 for (int i = 0; i < strTemporary4.length(); i++) {
                     // 如果检测到键盘按下
                     if (_kbhit()) {
-                        char key = _getch();  // 获取按下的键
-                        if (key == '\r') {  // 判断是否按下回车键
-                            cout << strTemporary4.substr(i) << endl;  // 输出剩下的全部内容
-                            break;
-                        }
+                        char key = _getch();
+                        cout << strTemporary4.substr(i) << endl;  // 输出剩下的全部内容
+                        break;
                     }
                     Sleep(2);
                     cout << strTemporary4[i];
@@ -164,11 +137,9 @@ void Menu::menu() {
             for (int i = 0; i < strTemporary5.length(); i++) {
                 // 如果检测到键盘按下
                 if (_kbhit()) {
-                    char key = _getch();  // 获取按下的键
-                    if (key == '\r') {  // 判断是否按下回车键
-                        cout << strTemporary5.substr(i) << endl;  // 输出剩下的全部内容
-                        break;
-                    }
+                    char key = _getch();
+                    cout << strTemporary5.substr(i) << endl;  // 输出剩下的全部内容
+                    break;
                 }
                 Sleep(2);
                 cout << strTemporary5[i];
@@ -177,13 +148,13 @@ void Menu::menu() {
             cin >> m_choice;
 
             //防止出错
-            while (m_choice<0 || m_choice>sum){
+            while (m_choice<0 || m_choice>sum) {
                 cout << "   请输入(0到" << sum << ")之间的数：";
                 cin >> m_choice;
             }
 
             if (m_choice == 0) continue;   //打开对应存档
-            else{
+            else {
                 strUser_adress = strBase_adress + "\\" + str[m_choice - 1];
                 ifstream ifs(strUser_adress + "\\basic.txt", ios::binary);
                 ifs.read(reinterpret_cast<char*>(&(strGame->character)), sizeof(Role)); // 使用 get() 获取裸指针  
@@ -202,7 +173,7 @@ void Menu::menu() {
                 break;
             }
         }
-        case 3:{
+        case 3: {
             choice2 = 0; // 退出游戏  
             break;
         }

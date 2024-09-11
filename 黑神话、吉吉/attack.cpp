@@ -7,10 +7,30 @@
 #include <ctime> // 包含时间函数  
 #include "Menu.h"  
 
-using namespace std;
 int getInt();
 
+// 延迟输出函数，按下回车键后立即输出容器中剩余的内容
+void delayedPrintVector(const vector<string>& temporary, int delay = 0) {
+    for (size_t i = 0; i < temporary.size(); ++i) {
+        const string& line = temporary[i];
+        for (char ch : line) {
+            if (_kbhit()) {
+                char ch = _getch();
+                // 按下任意键时立即输出剩余内容
+                delay = 0;
+            }
+            cout << ch;  // 输出当前字符
+            Sleep(delay);  // 延迟
+        }
+    }
+}
+
+void setColor(int color);
+
+
 int Game::attack() {
+    using namespace std;
+
     setEnemy();
 
     srand(static_cast<unsigned int>(time(0))); // 随机数种子  
@@ -19,9 +39,11 @@ int Game::attack() {
     Enemy *ptrEnemy = &enemy[bossID];
 
     int choose_Skill = 0;
-
+    setColor(12);
     ptrEnemy->showWord(0); // 显示敌人的对话  
-
+    setColor(10);
+    system("pause");
+    system("cls");
     // 主攻击循环  
     while (character.getHP() > 0 && ptrEnemy->getHP() > 0) {
         cout << "主角：" << endl;
@@ -31,88 +53,19 @@ int Game::attack() {
         cout << "     血量：" << ptrEnemy->getHP() << endl;
 
         int choose = 0;
-        string strTemporary6 = "请选择你要做的事情：";
+        vector<string> menuOptions = {
+            "\n1. 普通攻击\n",
+            "2. 使用技能攻击\n",
+            "3. 使用药水回复\n",
+            "4. 逃跑\n"
+            "请选择你要做的事情：",
+        };
+        setColor(14);
+        delayedPrintVector(menuOptions, 6);
 
-        for (int i = 0; i < strTemporary6.length(); i++) {
-            // 如果检测到键盘按下
-            if (_kbhit()) {
-                char key = _getch();  // 获取按下的键
-                if (key == '\r') {  // 判断是否按下回车键
-                    cout << strTemporary6.substr(i) << endl;  // 输出剩下的全部内容
-                    break;
-                }
-            }
-            Sleep(6);
-            cout << strTemporary6[i];
-        }
-
-        cout << endl;
-
-        string strTemporary7 = "1. 普通攻击";
-
-        for (int i = 0; i < strTemporary7.length(); i++) {
-            // 如果检测到键盘按下
-            if (_kbhit()) {
-                char key = _getch();  // 获取按下的键
-                if (key == '\r') {  // 判断是否按下回车键
-                    cout << strTemporary7.substr(i) << endl;  // 输出剩下的全部内容
-                    break;
-                }
-            }
-            Sleep(6);
-            cout << strTemporary7[i];
-        }
-        cout << endl;
-
-        string strTemporary8 = "2. 使用技能攻击";
-
-        for (int i = 0; i < strTemporary8.length(); i++) {
-            // 如果检测到键盘按下
-            if (_kbhit()) {
-                char key = _getch();  // 获取按下的键
-                if (key == '\r') {  // 判断是否按下回车键
-                    cout << strTemporary8.substr(i) << endl;  // 输出剩下的全部内容
-                    break;
-                }
-            }
-            Sleep(6);
-            cout << strTemporary8[i];
-        }
-        cout << endl;
-
-        string strTemporary9 = "3. 使用药水回复";
-
-        for (int i = 0; i < strTemporary9.length(); i++) {
-            // 如果检测到键盘按下
-            if (_kbhit()) {
-                char key = _getch();  // 获取按下的键
-                if (key == '\r') {  // 判断是否按下回车键
-                    cout << strTemporary9.substr(i) << endl;  // 输出剩下的全部内容
-                    break;
-                }
-            }
-            Sleep(6);
-            cout << strTemporary9[i];
-        }
-        cout << endl;
-
-        string strTemporary10 = "4. 逃跑";
-
-        for (int i = 0; i < strTemporary10.length(); i++) {
-            // 如果检测到键盘按下
-            if (_kbhit()) {
-                char key = _getch();  // 获取按下的键
-                if (key == '\r') {  // 判断是否按下回车键
-                    cout << strTemporary10.substr(i) << endl;  // 输出剩下的全部内容
-                    break;
-                }
-            }
-            Sleep(6);
-            cout << strTemporary10[i];
-        }
-        cout << endl;
         choose=getInt();
 
+        setColor(10);
         switch (choose) {
         case 1: {
             ptrEnemy->setHP(ptrEnemy->getHP() - character.getATK()); // 敌人受到伤害  
@@ -121,7 +74,6 @@ int Game::attack() {
         }
         case 2: 
             cout << "你想使用哪个技能？" << endl;
-
             cout << "1.烈焰斩     " << ((character.get_Flame_Slash()) ? "已获得" : "未获得") << endl;
             cout << "2.冰霜穿刺   " << ((character.get_Frost_Piercing()) ? "已获得" : "未获得") << endl;
             cout << "3.退出" << endl;
@@ -138,9 +90,9 @@ int Game::attack() {
                         ptrEnemy->setHP(ptrEnemy->getHP() - store.skills.hurt[0]);
                         character.setMP(character.getMP() - 10);
                     }
-                    else
+                    else{
                         cout << "你的魔法不足！" << endl;
-
+                    }
                 }
                 else
                     cout << "你还没有获得该技能！" << endl;
@@ -168,53 +120,13 @@ int Game::attack() {
             break;
         case 3: {  
             int potindex = 0;
-            string strTemporary14 = "你想用哪个药水?";
+            vector<string> menuOptions2 = {
+                "\n1.血量药水\n",
+                "2.能量药水\n",
+                "你想用哪个药水: ",
+            };
+            delayedPrintVector(menuOptions2);
 
-            for (int i = 0; i < strTemporary14.length(); i++) {
-                // 如果检测到键盘按下
-                if (_kbhit()) {
-                    char key = _getch();  // 获取按下的键
-                    if (key == '\r') {  // 判断是否按下回车键
-                        cout << strTemporary14.substr(i) << endl;  // 输出剩下的全部内容
-                        break;
-                    }
-                }
-                Sleep(6);
-                cout << strTemporary14[i];
-            }
-            cout << endl;
-
-            string strTemporary15 = "1.血量药水";
-
-            for (int i = 0; i < strTemporary15.length(); i++) {
-                // 如果检测到键盘按下
-                if (_kbhit()) {
-                    char key = _getch();  // 获取按下的键
-                    if (key == '\r') {  // 判断是否按下回车键
-                        cout << strTemporary15.substr(i) << endl;  // 输出剩下的全部内容
-                        break;
-                    }
-                }
-                Sleep(6);
-                cout << strTemporary15[i];
-            }
-            cout << endl;
-
-            string strTemporary16 = "2.能量药水";
-
-            for (int i = 0; i < strTemporary16.length(); i++) {
-                // 如果检测到键盘按下
-                if (_kbhit()) {
-                    char key = _getch();  // 获取按下的键
-                    if (key == '\r') {  // 判断是否按下回车键
-                        cout << strTemporary16.substr(i) << endl;  // 输出剩下的全部内容
-                        break;
-                    }
-                }
-                Sleep(6);
-                cout << strTemporary16[i];
-            }
-            cout << endl;
             do {
                 potindex=getInt();
             } while (potindex != 1 && potindex != 2);
@@ -229,11 +141,9 @@ int Game::attack() {
                     for (int i = 0; i < strTemporary17.length(); i++) {
                         // 如果检测到键盘按下
                         if (_kbhit()) {
-                            char key = _getch();  // 获取按下的键
-                            if (key == '\r') {  // 判断是否按下回车键
-                                cout << strTemporary17.substr(i) << endl;  // 输出剩下的全部内容
-                                break;
-                            }
+                            char ch = _getch();
+                            cout << strTemporary17.substr(i) << endl;  // 输出剩下的全部内容
+                            break;
                         }
                         Sleep(6);
                         cout << strTemporary17[i];
@@ -253,11 +163,9 @@ int Game::attack() {
                     for (int i = 0; i < strTemporary18.length(); i++) {
                         // 如果检测到键盘按下
                         if (_kbhit()) {
-                            char key = _getch();  // 获取按下的键
-                            if (key == '\r') {  // 判断是否按下回车键
-                                cout << strTemporary18.substr(i) << endl;  // 输出剩下的全部内容
-                                break;
-                            }
+                            char ch = _getch();
+                            cout << strTemporary18.substr(i) << endl;  // 输出剩下的全部内容
+                            break;
                         }
                         Sleep(6);
                         cout << strTemporary18[i];
@@ -274,8 +182,8 @@ int Game::attack() {
             for (int i = 0; i < strTemporary19.length(); i++) {
                 // 如果检测到键盘按下
                 if (_kbhit()) {
-                    char key = _getch();  // 获取按下的键
-                    if (key == '\r') {  // 判断是否按下回车键
+                    char ch = _getch();  // 获取按下的键
+                     {  // 判断是否按下回车键
                         cout << strTemporary19.substr(i) << endl;  // 输出剩下的全部内容
                         break;
                     }
@@ -292,8 +200,8 @@ int Game::attack() {
             for (int i = 0; i < strTemporary20.length(); i++) {
                 // 如果检测到键盘按下
                 if (_kbhit()) {
-                    char key = _getch();  // 获取按下的键
-                    if (key == '\r') {  // 判断是否按下回车键
+                    char ch = _getch();  // 获取按下的键
+                     {  // 判断是否按下回车键
                         cout << strTemporary20.substr(i) << endl;  // 输出剩下的全部内容
                         break;
                     }
@@ -305,7 +213,6 @@ int Game::attack() {
             break;
         }
     }
-
         // 检查角色在攻击后是否仍然存活  
         if (ptrEnemy->getHP() > 0) {
             cout << "怪物造成了 " << ptrEnemy->getATK() << " 点伤害。" << endl;
@@ -322,11 +229,10 @@ int Game::attack() {
         for (int i = 0; i < strTemporary21.length(); i++) {
             // 如果检测到键盘按下
             if (_kbhit()) {
-                char key = _getch();  // 获取按下的键
-                if (key == '\r') {  // 判断是否按下回车键
-                    cout << strTemporary21.substr(i) << endl;  // 输出剩下的全部内容
-                    break;
-                }
+                char ch = _getch();
+                cout << strTemporary21.substr(i) << endl;  // 输出剩下的全部内容
+                break;
+
             }
             Sleep(0);
             cout << strTemporary21[i];
@@ -344,11 +250,9 @@ int Game::attack() {
         for (int i = 0; i < strTemporary22.length(); i++) {
             // 如果检测到键盘按下
             if (_kbhit()) {
-                char key = _getch();  // 获取按下的键
-                if (key == '\r') {  // 判断是否按下回车键
-                    cout << strTemporary22.substr(i) << endl;  // 输出剩下的全部内容
-                    break;
-                }
+                char ch = _getch();
+                cout << strTemporary22.substr(i) << endl;  // 输出剩下的全部内容
+                break;
             }
             Sleep(6);
             cout << strTemporary22[i];
@@ -358,6 +262,5 @@ int Game::attack() {
         system("pause");
         return 2;
     }
-
     system("pause"); // 暂停系统以查看消息  
 }

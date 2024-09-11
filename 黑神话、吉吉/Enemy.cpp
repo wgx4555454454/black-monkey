@@ -27,6 +27,19 @@ vector<string> Enemy::getWords() {
 	return words;
 }
 
+void delayedPrintString(string& temporary, int delay = 0) {
+	const string& line = temporary;
+	for (char ch : line) {
+		if (_kbhit()) {
+			char ch = _getch();
+			// 按下任意键时立即输出剩余内容
+			delay = 0;
+		}
+		cout << ch;  // 输出当前字符
+		Sleep(delay);  // 延迟
+	}
+}
+
 
 
 void Enemy::showWord(int index) { // 输出NPC台词  
@@ -38,28 +51,14 @@ void Enemy::showWord(int index) { // 输出NPC台词
 
 	if (index < 0 || index >= strWord.size()) {
 		string strTemporary23 = "Invalid index!";
-		for (int i = 0; i < strTemporary23.length(); i++) {
-			// 如果检测到键盘按下
-			if (_kbhit()) {
-				char key = _getch();  // 获取按下的键
-				if (key == '\r') {  // 判断是否按下回车键
-					cout << strTemporary23.substr(i) << endl;  // 输出剩下的全部内容
-					break;
-				}
-			}
-			Sleep(20);
-			cout << strTemporary23[i];
-		}
+		delayedPrintString(strTemporary23, 20);
 		cout << endl;
 		return;
 	}
 
 	int pos = 0;  // 显式计数器，用于跟踪字符的索引
 
-	for (int i = 0; i < strWord[index].length(); i++) {
-		Sleep(6);
-		cout << strWord[index][i];
-	}
+	delayedPrintString(strWord[index], 6);
 
 	cout << endl;
 }
