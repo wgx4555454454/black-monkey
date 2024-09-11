@@ -2,7 +2,7 @@
 
 int getInt();
 
-void Role::showBag() {
+void Role::showBag() {//背包界面展示
 	system("cls");
 
 	cout << "血量药水：" << HpotionNum << endl;

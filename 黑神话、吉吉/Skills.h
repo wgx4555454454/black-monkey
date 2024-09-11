@@ -8,8 +8,8 @@ using namespace std;
 
 class Skills {
 public:
-    // 随便想几个技能名，技能伤害及状态  
-    vector<string> strSkillname = { "烈焰斩", "冰霜穿刺" };
+   
+    vector<string> strSkillname = { "烈焰斩", "冰霜穿刺" };//技能名
 
     vector<int> hurt = { 60, 60 };//技能造成的伤害
 

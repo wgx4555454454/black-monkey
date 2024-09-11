@@ -11,11 +11,11 @@ using namespace std;
 
 class Enemy {
 private:
-	int hp;
-	int atk;
+	int hp;//血量
+	int atk;//攻击力
 
-	string name;
-	vector<string> words;
+	string name;//敌人名字
+	vector<string> words;//敌人台词
 public:
 	Enemy():hp(0),atk(0),words(),name(){
 	}//默认构造函数

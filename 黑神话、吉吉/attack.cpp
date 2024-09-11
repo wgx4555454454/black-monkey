@@ -7,6 +7,7 @@
 #include <ctime> // 包含时间函数  
 #include "Menu.h"  
 
+using namespace std;
 int getInt();
 
 // 延迟输出函数，按下回车键后立即输出容器中剩余的内容
@@ -31,7 +32,7 @@ void setColor(int color);
 int Game::attack() {
     using namespace std;
 
-    setEnemy();
+    setEnemy();//设置boss参数
 
     srand(static_cast<unsigned int>(time(0))); // 随机数种子  
     int bossID = rand() % 7; // 随机选择一个敌人 
@@ -63,7 +64,12 @@ int Game::attack() {
         setColor(14);
         delayedPrintVector(menuOptions, 6);
 
-        choose=getInt();
+        do{
+            choose = getInt();
+            if (choose != 1 && choose != 2 && choose != 3 && choose != 4)
+                cout << "请输入1-4" << endl;
+
+        } while (choose != 1 && choose != 2 && choose != 3 && choose != 4);
 
         setColor(10);
         switch (choose) {
@@ -73,7 +79,7 @@ int Game::attack() {
             break;
         }
         case 2: 
-            cout << "你想使用哪个技能？" << endl;
+            cout << "你想使用哪个技能？" << endl;//选择技能
             cout << "1.烈焰斩     " << ((character.get_Flame_Slash()) ? "已获得" : "未获得") << endl;
             cout << "2.冰霜穿刺   " << ((character.get_Frost_Piercing()) ? "已获得" : "未获得") << endl;
             cout << "3.退出" << endl;
@@ -118,7 +124,7 @@ int Game::attack() {
                 break;
             }
             break;
-        case 3: {  
+        case 3: {  //药水
             int potindex = 0;
             vector<string> menuOptions2 = {
                 "\n1.血量药水\n",
