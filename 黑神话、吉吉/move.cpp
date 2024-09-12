@@ -4,6 +4,10 @@
 
 using namespace std;
 
+// 自定义延迟输出函数，按下回车键后立即输出剩余的内容
+void delayedPrintVector(const vector<string>& temporary, int delay = 0);
+void delayedPrintString(const string temporary, int delay = 0);
+
 int playerX = 2;
 int playerY = 1;
 
@@ -60,9 +64,9 @@ int Game::move(vector<string> map, vector<string> map_s) {
     int newX = playerX = 2; //记录新X坐标
     int newY = playerY = 1; //记录新Y坐标
     
-    displayMap(map);
-    displayEnemy(map_s);
-    displayP(newX, newY, map_s);
+    displayMap(map);//地图
+    displayEnemy(map_s);//敌人
+    displayP(newX, newY, map_s);//玩家位置
 
     while (true) {
         int preY = playerY;//记录旧Y坐标
@@ -143,22 +147,7 @@ int Game::move(vector<string> map, vector<string> map_s) {
             if (map_s[newY][newX] == '*') {
                 system("cls");
 
-                string temporary36 = "恭喜你通过本关！";
-
-                for (int i = 0; i < temporary36.length(); i++) {
-                    // 如果检测到键盘按下
-                    if (_kbhit()) {
-                        char key = _getch();  // 获取按下的键
-                        if (key == '\r') {  // 判断是否按下回车键
-                            cout << temporary36.substr(i) << endl;  // 输出剩下的全部内容
-                            break;
-                        }
-                    }
-                    Sleep(50);
-                    cout << temporary36[i];
-                }
-
-                cout << endl;
+                delayedPrintString("恭喜你通过本关！\n", 6);
 
                 playerX = 2;
                 playerY = 1;

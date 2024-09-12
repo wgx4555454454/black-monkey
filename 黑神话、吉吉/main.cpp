@@ -53,7 +53,7 @@ void delayedPrintVector(const vector<string>& temporary, int delay = 0) {
 		const string& line = temporary[i];
 		for (char ch : line) {
 			if (_kbhit()) {
-				char ch = _getch();
+				char c = _getch();
 				// 按下任意键时立即输出剩余内容
 				delay = 0;
 			}
@@ -111,10 +111,10 @@ void welcomePage()
 	vector<string> strPage2 = {
 	"╔═══════════════════════════════════════════════════════════════════════╗",
 	"║\t\t***中国海洋大学2024夏季学期c++课程设计***\t\t║",
-	"║ 文字版《黑神话·悟空》\t\t\t\t\t\t\t║",
-	"║ 游戏介绍：一个简单的文字RPG。\t\t\t\t\t\t║",
+	"║ 《黑神话·吉吉》\t\t\t\t\t\t\t║",
+	"║ 游戏介绍：一个简单的RP类型MUD游戏。\t\t\t\t\t║",
 	"║ 版本：1.0\t\t\t\t\t\t\t\t║",
-	"║ 作者: 王桂鑫 袁东霖 王杰 程传哲 扬杨\t\t\t\t\t║",
+	"║ 作者: 王桂鑫 袁东霖 王杰 程传哲 杨扬\t\t\t\t\t║",
 	"║ github地址: https://github.com/wgx4555454454/black-monkey.git\t\t║",
 	"╚═══════════════════════════════════════════════════════════════════════╝",
 	};

@@ -12,7 +12,6 @@ void delayedPrintVector(const vector<string>& temporary, int delay = 0);
 void delayedPrintString(const string temporary, int delay = 0);
 
 
-
 //创建，读取，保存存档
 void Menu::menu() {
 

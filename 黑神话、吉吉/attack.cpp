@@ -116,6 +116,7 @@ int Game::attack() {
                 "你想用哪个药水: "
             };
             delayedPrintVector(menuOptions2);
+
             potindex = getInt(1, 2);
 
             if (potindex == 1) {
