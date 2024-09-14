@@ -112,7 +112,7 @@ void welcomePage()
 	"╔═══════════════════════════════════════════════════════════════════════╗",
 	"║\t\t***中国海洋大学2024夏季学期c++课程设计***\t\t║",
 	"║ 《黑神话·吉吉》\t\t\t\t\t\t\t║",
-	"║ 游戏介绍：一个简单的RP类型MUD游戏。\t\t\t\t\t║",
+	"║ 游戏介绍：一个简单的RPG类型MUD游戏。\t\t\t\t\t║",
 	"║ 版本：1.0\t\t\t\t\t\t\t\t║",
 	"║ 作者: 王桂鑫 袁东霖 王杰 程传哲 杨扬\t\t\t\t\t║",
 	"║ github地址: https://github.com/wgx4555454454/black-monkey.git\t\t║",
